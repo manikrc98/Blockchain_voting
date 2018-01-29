@@ -22,17 +22,20 @@
         $count = $result->num_rows;
         if ($count == 1){
             $_SESSION['user'] = $result->fetch_assoc()["username"];
+            echo "Hey " . $user . " ,you have successfully logged in."; 
+       		 header('location: ../login_success.php');
         }
         else
         {
             $fmsg = "Invalid Login Credentials.";
+            session_destroy();
         }
     }
     if (isset($_SESSION['user']))
     {
-        $user = $_SESSION['user'];
-        echo "Hey " . $user . " ,you have successfully logged in.";
+    	 echo "Invalid Login";
     }else{
+    	
         echo "Invalid Login";
     } 
     $conn->close();
