@@ -20,7 +20,7 @@
         background-color: #FFC107;
         color:white;
         padding: 0 4px 0 4px;
-        font-size: 110px;
+        font-size: 3rem;
         box-shadow: 2px 4px 3px #888888;
       }
       .gold:hover
@@ -28,46 +28,113 @@
         box-shadow: 2px 6px 4px #888888;
         cursor: pointer;        
       }
+      .head
+      {
+        background-color: #FFFFFF;
+        color:#343A40;
+        padding: 0 4px 0 4px;
+        font-size: 3rem;
+        box-shadow: 2px 4px 3px #888888;
+      }
+      .head:hover
+      {
+        box-shadow: 2px 6px 4px #888888;
+        cursor: pointer;        
+      }
+
+            .display-1{
+                  font-size: 3rem;
+                }
+            @media (min-width: 576px) {
+              .display-1{
+                  font-size: 4rem;
+                }
+              .gold{
+                  font-size: 4rem;
+                }
+            }
+  
+            @media (min-width: 768px) {
+                  .display-1{
+                  font-size: 4.5rem;
+                }
+                .gold{
+                    font-size: 4.5rem;
+                  }
+                  
+              .head{
+                  border: solid #343A40 5px; 
+              } 
+            }
+
+            @media (min-width: 992px) {
+              .display-1{
+                  font-size: 5.5rem;
+                }
+                .gold{
+                    font-size: 6rem;
+                  } 
+            }
+
+            @media (min-width: 1200px) {
+              .display-1{
+                  font-size: 7rem;
+                }
+                .gold{
+                    font-size: 7rem;
+                  } 
+            }
      </style>
   </head>
-  <body>
+  <body background="web-b1g.png">
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+    <nav class="col-12 navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
 
-        <a href="#" class="navbar-brand">Voting with Blockchain</a> <!-- LOGO -->
+        <a href="index.php" class="col-3 col-sm-5 col-md-3 col-lg-2 navbar-brand mr-3">Voting with Blockchain</a> <!-- LOGO -->
         
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">   <span class="navbar-toggler-icon"></span> 
+        <button class="col-2 navbar-toggler navbar-toggler-icon" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">   
         </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">  <!-- Collapsible Navbar -->
-          <ul class="offset-sm-1 navbar-nav">
-          <li class="nav-item">
+
+        <div class="collapse navbar-collapse offset-md-1" id="collapsibleNavbar">  <!-- Collapsible Navbar -->
+          <ul class="navbar-nav col-12">
+          <li class="nav-item mr-2">
             <a href="index.php" class="nav-link">Home</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item mr-2">
             <a href="#" class="nav-link">About us</a>
           </li>
+          <li class="nav-item mr-2">
+            <a href="#" class="nav-link d-none d-lg-block" data-toggle="collapse" data-target="#demo">Login Now</a>
+          </li>
+          <li class="nav-item mr-2">
+            <a href="signup.php" class="nav-link">Sign Up</a>
+          </li>
           </ul>  
-        </div>
+        </div> 
         
-
-        <form class="form-inline col-sm-8" action="/action_page.php">
-         <label for="usr" class="text-white mr-2">Username:</label>
+    </nav>
+    <div class="collapse" id="demo">
+     <form class="col-xl-12 form-inline d-none d-lg-block bg-info pt-2 pb-2" action="/action_page.php">
+         <div class="offset-xl-3 row">
+          <label for="usr" class="mr-2 text-white">Username:</label>
          <input type="text" name="form-control" id="usr">
-         <label for="pwd" class="text-white ml-4 mr-2">Password:</label>
+         <label for="pwd" class="ml-4 mr-2 text-white">Password:</label>
          <input type="Password" class="form-control" id=pwd>
          <a href="login_success.php"><button type="button" class="btn btn-warning ml-4">Login</button></a>
          <a href="signup.php"><button type="button" class="btn btn-light ml-2">Signup</button></a>
-         </form>
-      </nav>
-
+          </div>
+      </form>
+    </div>
+  
+  
     <div class="container-fluid">
         <div class="display-1 fstyle text-center">
-          Your every vote counts,<br> <span class="gold">with blockchain</span>
+            <span class="display-1 head">Your every vote counts,</span><br> <span class="gold">with blockchain</span>
         </div>
-        <div class="mt-5 ml-5"> 
-        <button type="button" class="btn btn-primary offset-4 mr-2">Start New Campaign</button>         
-        <em><strong>or</strong></em>
-        <button type="button" class="btn btn-dark ml-2">Vote Now</button>
+        <div class="row mt-5 col-12 mb-4"> 
+        <button type="button" class="btn btn-primary offset-2 col-9 offset-sm-2 col-sm-4 offset-md-3 col-md-3 col-lg-3 offset-xl-4 col-xl-2">Start New Campaign</button>         
+        <div class="col-12 col-sm-1 offset-sm-0 text-center mt-2 "><em><strong>or</strong></em></div>
+        <button type="button" class="btn btn-dark offset-4 col-5 offset-sm-0 col-sm-3 col-md-3 col-lg-2 col-xl-1 mt-1">Vote Now</button>
         </div>
     </div>
     <!-- Optional JavaScript -->
