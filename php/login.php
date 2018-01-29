@@ -1,47 +1,39 @@
 <?php
-	$server = "localhost";
-	$username = "Voting";
-	$password = "akshatah";
-	$database="votingDB";
-	$conn = new mysqli($server,$username,$password,$database);
-	if($conn->connect_error)
-	{
-		die("Error in connecting" . $conn->connect_error);
-	}
-    // echo "Connected Properly";
+	require 'connection.php';
 //LOGIN
     session_start();
-    if (isset($_POST['username']) and isset($_POST['password']))
+    if (isset($_POST['user']) and isset($_POST['password']))
     {
-        $username = $_POST['username'];
+        $user = $_POST['user'];
         $password = $_POST['password'];
-        $query = "SELECT * FROM users WHERE username='$username' and password='$password'";
-        // $sql = "SELECT username, password FROM users";
-        // $result1 = $conn->query($sql);
+        $query = "SELECT * FROM users WHERE email='$user' and password='$password'";
+        $conn->query($query);
+        //$sql = "SELECT email, password FROM users";
+        //$result1 = $conn->query($sql);
         // if ($result1->num_rows > 0) 
         // {
         //     while($row = $result1->fetch_assoc()) 
         //     {
-        //         echo "User: " . $row["username"]. " - Password: " . $row["password"]. " " . "<br>";
+        //         echo "User: " . $row["email"]. " - Password: " . $row["password"]. " " . "<br>";
         //     }
         // }
         $result = $conn->query($query) or die($conn->connect_error);
-        echo "This is ".$result->fetch_assoc()["username"]."<br>";
+        //echo "This is ".$result->fetch_assoc()["username"]."<br>";
         $count = $result->num_rows;
         if ($count == 1){
-            $_SESSION['username'] = $username;
+            $_SESSION['user'] = $result->fetch_assoc()["username"];
         }
         else
         {
             $fmsg = "Invalid Login Credentials.";
         }
     }
-    if (isset($_SESSION['username']))
+    if (isset($_SESSION['user']))
     {
-        $username = $_SESSION['username'];
-        echo "Hai " . $username . "";
+        $user = $_SESSION['user'];
+        echo "Hey " . $user . " ,you have successfully logged in.";
     }else{
-        echo "This is the Members Area";
+        echo "Invalid Login";
     } 
     $conn->close();
 ?>

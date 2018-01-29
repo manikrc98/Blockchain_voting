@@ -8,4 +8,5 @@
 	{
 		die("Error in connecting" . $conn->connect_error);
 	}
+	
 ?>

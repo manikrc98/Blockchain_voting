@@ -8,17 +8,19 @@
 	$REG="";
 	if($password!=$password1)
 	{
-		header('Location: signup.php');
+		header('Location: ../signup.php');
 		echo "Password did not match";
 	}
-	$querry="insert into users values('$user','$email','$password','$country','getdate()')";
+	$querry="insert into users values('$user','$email','$password','$country')";
 	if($conn->query($querry) === true)
 	{
+		//header('Location: ../signup.php');
 		$Reg="New user Registered";
 		echo "New User registered"; 
 		
 	}
 	else {
+		//header('Location: ../signup.php');
 		$Reg="Error Occured".$conn->error;
 		echo "Error Occured" . $conn->error;
 	}
