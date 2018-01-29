@@ -1,0 +1,123 @@
+body,html
+{
+	margin:0px;
+	padding: 0px;
+}
+.header
+{
+	position: relative;
+	height: 50px;
+	margin:0px;
+	padding: 10px;
+	background-color:#0b84f8;
+}
+.container
+{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+.logo
+{
+	color: white;
+	font-family: lato;
+	font-size: 20px;
+	text-align: center;
+	display: inline;
+	margin-left: 10px;
+}
+.login
+{
+	top:-10px;
+	position: relative;
+	color: white;
+	font-family: lato;
+	float: right;
+}
+.logbut
+{
+	background-color: white;
+	border: none;
+	width: 80px;
+	padding: 0;
+	margin-left: 15px;
+	color: #0b84f8;
+	height: 22px;
+	border-radius: 5px;
+}
+.logbut:hover
+{
+	box-shadow: 2px 2px grey;
+	cursor: pointer;
+}
+.main-content
+{
+	position: relative;
+	height: 90%;
+	color:#0b84f8;
+}
+h1
+{
+	position: relative;
+	font-family:lato;
+	font-size: 100px;
+	text-align: center;
+	top:80px;
+}
+.vp
+{
+	padding: 0;
+	margin:0;
+	position: relative;
+	top:10px;
+	background-color:#0b84f8;
+	color:white;
+	width: 40%;
+	left: 400px;
+	border-radius:10px;
+
+}
+.greetings
+{
+	color: #0b84f8;
+	position: relative;
+	margin-left: 10%;
+	width: 80%;
+	font-family: lato;
+}
+.steps
+{
+	color:  #0b84f8;
+	background-color:white;
+	border:solid 2px #0b84f8;
+	position: relative;
+	left: 30%;
+	top:50px;
+	height: 30px;
+	padding:6px;
+	width: 42%;
+	font-family: lato;	
+}
+.steps:hover
+{
+	background-color:#0b84f8;
+	color:white;
+	cursor: pointer;
+}
+.steplist
+{
+	top:40px;
+	color:  #0b84f8;
+	font-family: lato;
+	position: relative;
+	/*margin-left: 20%;*/
+	text-align: center;
+	font-weight: bold;
+	/*font-style:italic;*/
+	font-size: 30px;
+}
+.steplist li
+{
+	/*position: relative;*/
+	margin:10px;
+}
