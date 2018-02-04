@@ -1,3 +1,8 @@
+<?php include "backend/connection.php";?>
+<?php
+    include "backend/functions.php";
+    session_start();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -14,6 +19,12 @@
       .fstyle{
         font-family: lato;
         margin-top:70px;
+      }
+      .error{
+          color: red;
+          text-align: center;
+          font-weight: bold;
+          /*font-family:Arial;*/
       }
       .gold
       {
@@ -113,19 +124,28 @@
         </div> 
         
     </nav>
+<!-- Login -->
     <div class="collapse" id="demo">
-     <form class="col-xl-12 form-inline d-none d-lg-block bg-info pt-2 pb-2" action="php/login.php" method="post">
+     <form class="col-xl-12 form-inline d-none d-lg-block bg-info pt-2 pb-2" action="index.php" method="post">
          <div class="offset-xl-3 row">
           <label for="usr" class="mr-2 text-white">Email:</label>
-         <input type="text" name="form-control" id="usr" name="user">
+         <input type="text"  id="usr" name="username">
          <label for="pwd" class="ml-4 mr-2 text-white">Password:</label>
          <input type="Password" class="form-control" id=pwd name="password">
-         <a href="login_success.php"><button type="button" class="btn btn-warning ml-4">Login</button></a>
+         <button type="submit" class="btn btn-warning ml-4" name="login" value="Submit">Login</button>
          <a href="signup.php"><button type="button" class="btn btn-light ml-2">Signup</button></a>
           </div>
       </form>
+
     </div>
-  
+    <div class="error">
+
+    <?php
+    if(isset($_POST['login'])) {
+        login();
+    }
+    ?>
+    </div>
   
     <div class="container-fluid">
         <div class="display-1 fstyle text-center">

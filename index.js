@@ -3,7 +3,7 @@ abi = JSON.parse('[{"constant":false,"inputs":[{"name":"candidate","type":"bytes
 VotingContract = web3.eth.contract(abi);
 
 //Address has to be added here
-contractInstance = VotingContract.at('0xa046fd570e912531c90498c5cd5f979b7e3edd70');
+contractInstance = VotingContract.at('0xfa8c852147be8ed708e07da4607e28feba71154c');
 candidates = {"Manik": "candidate-1", "Akshat": "candidate-2", "Ashwin": "candidate-3", "Chahat":"candidate-4"};
 
 // VOTE FOR CANDIDATE function
