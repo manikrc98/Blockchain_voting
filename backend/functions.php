@@ -12,12 +12,12 @@
                $enc_pass = crypt($password,$hash);
                $query = "SELECT * FROM users WHERE ";
                $query .= "email = '$username' and password = '$enc_pass'";
-               $result = mysqli_query($conn,$query);
-               if(!$result){die(('Query Failed') . mysqli_error($conn));}
-               elseif (mysqli_num_rows($result) == 1)
+               $result = $conn->query($query);
+               if(!$result){die(('Query Failed') . $conn->error());}
+               elseif ($result->num_rows == 1)
                {
 
-                    $_SESSION['$userName']=mysqli_fetch_assoc($result)['username'];
+                    $_SESSION['$userName']=$result->fetch_assoc()['username'];
                     echo "Welcome " . $_SESSION['$userName'];
                     sleep(1);
                     echo " <script>window.location.assign('login_success.php'); </script>";
@@ -31,7 +31,7 @@
            else{
                 echo "Error: Please Enter Username and Password";
            }
-           mysqli_close($conn);
+           $conn->close();
     }
 
 
