@@ -1,5 +1,6 @@
 <?php
     include "connection.php";
+    include_once "TABLE.php";
 
     function login(){
             global $conn;
