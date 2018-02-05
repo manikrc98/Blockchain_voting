@@ -1,3 +1,8 @@
+<?php include "backend/connection.php"; ?>
+<?php
+    include "backend/functions.php";
+    session_start();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,6 +16,10 @@
       .sstyle{
         font-family: lato;
         margin-top:30px;
+      }
+      .error{
+          color: red;
+          text-align: center;
       }
       #block{
         display: block;
@@ -41,16 +50,32 @@
         </div>
         
 
-        <div class="col-sm-8" action="php/login.php" id="alrdlog">
+        <div class="col-sm-8" action="signup.php" id="alrdlog">
          <label for="already" class="text-white offset-8">Already have an account?</label>
          <button onclick="login_visible()" type="button" class="btn btn-warning ml-3">Login</button>
          </div>
       </nav>
+    <div class="error">
+     <?php
+     if(isset($_POST['signup']))
+     {
+         register();
+     }
+    ?>
+    </div>
+    <div class="error">
+        <?php
+        if(isset($_POST['login']))
+        {
+            login();
+        }
+        ?>
+    </div>
       <!-- SIGN UP FORM -->
       <div class="container" id="block">
         <div class="display-2 sstyle col-12 text-center ">Sign Up</div>
         <!--Signup form-->
-        <form name="Register" class="mt-5 form offset-3 col-6 mb-5" method="post" action="php/register.php" >
+        <form name="Register" class="mt-5 form offset-3 col-6 mb-5" method="post" action="signup.php" >
         <div class="form-group">
           <label for="usr">Name </label>
           <input type="text" class="form-control" id="usr" name="name">
@@ -80,22 +105,22 @@
         <label class="form-check-label" for="autoSizingCheck2">
           Remember me
         </div>
-        <button type="submit" class="btn btn-primary mt-5 col-12 text-center">Sign in</button>
+        <button type="submit" class="btn btn-primary mt-5 col-12 text-center" name="signup">Sign in</button>
         </form>
       </div>
       <!-- LOGIN FORM -->
       <div class="container" id="none">
         <div class="display-2 sstyle col-12 text-center">Log In</div>
-        <form class="form offset-3 col-6" action="php/login.php" method="post">
+        <form class="form offset-3 col-6" action="signup.php" method="post">
           <div class="form-group">
             <label for="usr">Email</label>
-            <input type="email" class="form-control" id="usr" name="user">
+            <input type="email" class="form-control" id="usr" name="username">
           </div>
           <div class="form-group">
             <label for="pwd">Password</label>
             <input type="Password" class="form-control" id="pwd" name="password">
           </div>
-          <button type="submit" class="btn btn-primary offset-4 col-4">Log In</button>
+          <button type="submit" class="btn btn-primary offset-4 col-4" name="login">Log In</button>
         </form>
       </div>
     <script>

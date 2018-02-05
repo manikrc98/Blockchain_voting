@@ -1,5 +1,10 @@
+<?php include "backend/connection.php";?>
+<?php include
+    "backend/functions.php";
+    session_start();
+?>
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -27,14 +32,23 @@
           </li>
           </ul>  
         </div>
+         <form action="login_success.php" method="post">
          <div class="dropdown">
-        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">Hi User!</button>
+        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['$userName']; ?></button>
         <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" href="#">Edit Profile</a>
-          <a class="dropdown-item" href="#">Logout</a>
+            <button class="dropdown-item" type="submit" name="edit">Edit Profile</button>
+            <button class="dropdown-item" type="submit" name="logout">Logout</button>
         </div>
         </div>
+         </form>
+
       </nav>
+     <div>
+         <?php
+         if(isset($_POST['logout']))
+             logout();
+         ?>
+     </div>
       <div class="table-responsive col-12 offset-md-3 col-md-6 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6 mt-5">
         <table class="table table-hover table-bordered text-center">
           <thead class="thead-dark">
