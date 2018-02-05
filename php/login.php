@@ -7,7 +7,7 @@
         $user = $_POST['user'];
         $password = $_POST['password'];
         $query = "SELECT * FROM users WHERE email='$user' and password='$password'";
-        $conn->query($query);
+        // $conn->query($query);
         //$sql = "SELECT email, password FROM users";
         //$result1 = $conn->query($sql);
         // if ($result1->num_rows > 0) 
