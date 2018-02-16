@@ -74,8 +74,15 @@
             </tr>
           </tbody>
         </table>
-      <div class="col-12">
-      <input type="text" id="candidate" class="col-8 offset-sm-2 col-sm-6 offset-md-3 col-md-4" />
+      <div class="col-12 form-group row">
+      <select class="form-control col-8 offset-sm-2 col-sm-6 offset-md-3 col-md-4 mr-2" id="sel1">
+        <option>Manik</option>
+        <option>Akshat</option>
+        <option>Ashwin</option>
+        <option>Chahat</option>
+      </select>
+ 
+      <!-- <input type="text" id="candidate" class="col-8 offset-sm-2 col-sm-6 offset-md-3 col-md-4" /> -->
       <button class="btn btn-warning col-3 col-sm-3 col-md-2" onclick="voteForCandidate()">Vote</button>
       </div>
       </div>
