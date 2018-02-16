@@ -21,7 +21,7 @@
                     $_SESSION['$userName']=$result->fetch_assoc()['username'];
                     echo "Welcome " . $_SESSION['$userName'];
                     sleep(1);
-                    echo " <script>window.location.assign('login_success.php'); </script>";
+                    echo " <script>window.location.assign('loginSuccess.php'); </script>";
                }
                else
                {
@@ -75,9 +75,9 @@
 
     function logout()
     {
-        echo "<center>Loging Out of " .$_SESSION['$userName']  . " account</center>";
-        session_destroy();
+        echo "<center>Loging Out of " .$_SESSION['$userName']  . " 's account</center>";
         sleep(1.5);
+        session_destroy();
         echo " <script>window.location.assign('index.php'); </script>";
     }
 ?>

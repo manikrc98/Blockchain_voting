@@ -1,0 +1,79 @@
+.fstyle{
+font-family: lato;
+margin-top:70px;
+}
+.error{
+color: red;
+text-align: center;
+font-weight: bold;
+/*font-family:Arial;*/
+}
+.gold
+{
+background-color: #FFC107;
+color:white;
+padding: 0 4px 0 4px;
+font-size: 3rem;
+box-shadow: 2px 4px 3px #888888;
+}
+.gold:hover
+{
+box-shadow: 2px 6px 4px #888888;
+cursor: pointer;        
+}
+.head
+{
+background-color: #FFFFFF;
+color:#343A40;
+padding: 0 4px 0 4px;
+font-size: 3rem;
+box-shadow: 2px 4px 3px #888888;
+}
+.head:hover
+{
+box-shadow: 2px 6px 4px #888888;
+cursor: pointer;        
+}
+
+.display-1{
+    font-size: 3rem;
+  }
+@media (min-width: 576px) {
+.display-1{
+    font-size: 4rem;
+  }
+.gold{
+    font-size: 4rem;
+  }
+}
+
+@media (min-width: 768px) {
+    .display-1{
+    font-size: 4.5rem;
+  }
+  .gold{
+      font-size: 4.5rem;
+    }
+    
+.head{
+    border: solid #343A40 5px; 
+} 
+}
+
+@media (min-width: 992px) {
+.display-1{
+    font-size: 5.5rem;
+  }
+  .gold{
+      font-size: 6rem;
+    } 
+}
+
+@media (min-width: 1200px) {
+.display-1{
+    font-size: 7rem;
+  }
+  .gold{
+      font-size: 7rem;
+    } 
+}

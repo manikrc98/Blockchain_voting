@@ -32,7 +32,7 @@
           </li>
           </ul>  
         </div>
-         <form action="login_success.php" method="post">
+         <form action="loginSuccess.php" method="post">
          <div class="dropdown">
         <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['$userName']; ?></button>
         <div class="dropdown-menu dropdown-menu-right">
