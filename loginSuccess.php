@@ -1,7 +1,15 @@
-<?php include "backend/connection.php";?>
+<?php
+//namespace src\be\kunstmaan\multichain;
+include "backend/connection.php";?>
 <?php include
     "backend/functions.php";
     session_start();
+?>
+<?php
+use be\kunstmaan\multichain\MultichainClient;
+use be\kunstmaan\multichain\MultichainHelper;
+
+     $client = new MultichainClient('localhost:9254','akki','akshatah',3);
 ?>
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
@@ -17,6 +25,9 @@
     <title>Blockchain Voting</title>
   </head>
   <body>
+  <?php
+
+  ?>
      <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
 
         <a href="index.php" class="navbar-brand text-center">Voting with Blockchain</a> <!-- LOGO -->
