@@ -2,6 +2,10 @@
 <?php
     include "backend/functions.php";
     session_start();
+    if(isset($_COOKIE['name']))
+    {
+      echo "<script>window.location.assign('loginSuccess.php'); </script>";
+    }
 ?>
 <!doctype html>
 <html lang="en">
@@ -120,10 +124,27 @@
           <li class="nav-item mr-2">
             <a href="signup.php" class="nav-link">Sign Up</a>
           </li>
+          </li>
+          <li class="nav-item mr-2">
+            <?php
+              // if(isset($_COOKIE['name']))
+              {
+                if(isset($_POST['login'])) {
+                  login($_POST['username'],$_POST['password']);
+              }
+                // rememberme();
+                // setcookie("test","abc",(time()+(60*60*1)));
+                // test();
+                // echo "welcome ". $_COOKIE['name'];
+                // echo $_COOKIE['test'];
+              }
+            ?>
+          </li>
           </ul>  
         </div> 
         
     </nav>
+    
 <!-- Login -->
     <div class="collapse" id="demo">
      <form class="col-xl-12 form-inline d-none d-lg-block bg-info pt-2 pb-2" action="index.php" method="post">
@@ -134,6 +155,8 @@
          <input type="Password" class="form-control" id=pwd name="password">
          <button type="submit" class="btn btn-warning ml-4" name="login" value="Submit">Login</button>
          <a href="signup.php"><button type="button" class="btn btn-light ml-2">Signup</button></a>
+         <input type="checkbox" name="rm">Remember ME</input>
+         <!-- <?php //rememberme(); ?> -->
           </div>
       </form>
 
@@ -141,12 +164,13 @@
     <div class="error">
 
     <?php
-    if(isset($_POST['login'])) {
-        login();
-    }
+      
+    // if(isset($_POST['login'])) {
+    //     login($_POST['username'],$_POST['password']);
+    // }
     ?>
     </div>
-  
+    <?php print_r($_COOKIE); ?>
     <div class="container-fluid">
         <div class="display-1 fstyle text-center">
             <span class="display-1 head">Your every vote counts,</span><br> <span class="gold">with blockchain</span>

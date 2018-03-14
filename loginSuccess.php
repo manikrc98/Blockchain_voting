@@ -6,11 +6,15 @@ include "backend/connection.php";?>
     session_start();
 ?>
 <?php
-use be\kunstmaan\multichain\MultichainClient;
-use be\kunstmaan\multichain\MultichainHelper;
+// use be\kunstmaan\multichain\MultichainClient;
+// use be\kunstmaan\multichain\MultichainHelper;
 
-     $client = new MultichainClient('localhost:9254','akki','akshatah',3);
+    //  $client = new MultichainClient('localhost:9254','akki','akshatah',3);
 ?>
+    <?php
+         if(isset($_POST['logout']))
+             logout();
+    ?>
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
   <head>
@@ -25,9 +29,7 @@ use be\kunstmaan\multichain\MultichainHelper;
     <title>Blockchain Voting</title>
   </head>
   <body>
-  <?php
-
-  ?>
+  
      <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
 
         <a href="index.php" class="navbar-brand text-center">Voting with Blockchain</a> <!-- LOGO -->
@@ -49,7 +51,7 @@ use be\kunstmaan\multichain\MultichainHelper;
         </div>
          <form action="loginSuccess.php" method="post">
          <div class="dropdown">
-        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['$userName']; ?></button>
+        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><?php echo $_COOKIE['name']; ?></button>
         <div class="dropdown-menu dropdown-menu-right">
             <button class="dropdown-item" type="submit" name="edit">Edit Profile</button>
             <button class="dropdown-item" type="submit" name="logout">Logout</button>
@@ -117,10 +119,7 @@ use be\kunstmaan\multichain\MultichainHelper;
           </div>
       </div>
 
-         <?php
-         if(isset($_POST['logout']))
-             logout();
-         ?>
+        
     <!-- Optional JavaScript -->
     <script src="./index.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
