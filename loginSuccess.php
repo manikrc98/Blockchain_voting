@@ -4,6 +4,9 @@ include "backend/connection.php";?>
 <?php include
     "backend/functions.php";
     session_start();
+
+         if(isset($_POST['logout']))
+             logout();
 ?>
 <?php
 // use be\kunstmaan\multichain\MultichainClient;
@@ -11,10 +14,6 @@ include "backend/connection.php";?>
 
     //  $client = new MultichainClient('localhost:9254','akki','akshatah',3);
 ?>
-    <?php
-         if(isset($_POST['logout']))
-             logout();
-    ?>
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
   <head>
@@ -53,7 +52,8 @@ include "backend/connection.php";?>
          <div class="dropdown">
         <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><?php echo $_COOKIE['name']; ?></button>
         <div class="dropdown-menu dropdown-menu-right">
-            <button class="dropdown-item" type="submit" name="edit">Edit Profile</button>
+            <button class="dropdown-item" type="button" name="edit">Edit Profile</button>
+            <button class="dropdown-item" type="button" name="create_camp" onclick="window.location.href='create_camp.php'">Create Campaign</button>
             <button class="dropdown-item" type="submit" name="logout">Logout</button>
         </div>
         </div>
