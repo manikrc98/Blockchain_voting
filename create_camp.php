@@ -34,12 +34,13 @@ include "backend/connection.php";?>
       	display: none;
       }
       .dot {
-  height: 25px;
-  width: 25px;
-  background-color: #bbb;
+  height: 20px;
+  width: 20px;
+  border: solid 1px #FFC107;
   border-radius: 50%;
   display: inline-block;
 }
+
   </style>
   </head>
   <body>
@@ -59,7 +60,13 @@ include "backend/connection.php";?>
           </li>
           </ul>
         </div>
-         <form action="create_camp.php" method="post">
+
+         <form action="create_camp.php" class="form-inline" method="post">
+          <div class="dots d-inline mr-5 mt-2">
+          <span class="dot" id="1Sel"></span>
+          <span class="dot" id="2Sel"></span>
+          <span class="dot" id="3Sel"></span>
+          </div>
          <div class="dropdown">
         <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><?php echo $_COOKIE['name']; ?></button>
         <div class="dropdown-menu dropdown-menu-right">
@@ -71,12 +78,16 @@ include "backend/connection.php";?>
          </form>
       </nav>
 
+      <!-- ONSTART -->
+      <script type="text/javascript">
+        document.getElementById('1Sel').style.background='#FFC107';
+      </script>
+
 	<!-- FIRST PAGE	 -->
-     <div class="container" id="create1">	
-     					<span class="dot"></span>
-  				<span class="dot"></span>
-  				<span class="dot"></span>
-     	<div class="display-4 sstyle col-12">Create Campaign</div>
+     <div class="container mt-5" id="create1">	
+     			
+     	<div class="display-4 d-inline sstyle col-12">Create Campaign</div>
+      
      <form class="form col-8 mt-4" action="create_camp.php" method="POST">
      	<div class="form-group">
      		<label for="campN">Campaign Name:</label>
@@ -98,25 +109,14 @@ include "backend/connection.php";?>
      	</div>
      	<div class="form-group">
      		<label for="campUa">User Accessibility:</label>
-	     	<select class="form-control" name="candUa" onchange="verificationProof(this)" id="ua">
+	     	<select class="form-control" name="candUa" id="ua">
      			<option value="All">All Users</option>
      			<option value="Verified">Verified</option>
      		</select>
      	</div>
-     	<button type="Submit" class="btn btn-primary mt-5 offset-10 col-2" name="Next">Next</button>
+     	<button type="Submit" class="btn btn-primary d-inline offset-10 col-2" name="Next">Next</button>
      </form>
      </div>
-     <script type="text/javascript">
-     	function verificationProof(obj){
-     		var selectBox = obj;
-     		var selected = selecBox.options[selectBox.selectedIndex].value;
-     		if(selected == 'Verified')
-     		{
-     			// document.getElementById('vProof').style.display = "none";
-     			document.write('Hello');
-     		}
-     	}
-     </script>
 	
      <!-- SECOND PAGE -->
      <div class="container" id="create2">	
@@ -129,21 +129,33 @@ include "backend/connection.php";?>
      			<th>Candidate Age </th>
      			<th>Candidate Photo </th>
      		</thead>
-     	<?php
-     	$rows = $_POST['candNum'];
-     	$i=1;
-     	while($i<=$rows)
-     	{
-     		echo "<tr>
-     		<td>" .$i. "</td>
-     		<td><input type='text' name='cN" .$i."'></input></td>
-     		<td><input type='Number' name='cAg" .$i."'></input></td>
-     		<td><input type='file' name='cImg".$i."'></input></td>
-     		</tr>";
-     		$i++;
-     	}
+     	
+                  <!-- PHP FOR NEXT1 -->
+        <?php
+          // AUTO TABLE GENERATION
+          $rows = $_POST['candNum'];
+          $i=1;
+          while($i<=$rows)
+          {
+            echo "<tr>
+            <td>" .$i. "</td>
+            <td><input type='text' name='cN" .$i."'></input></td>
+            <td><input type='Number' name='cAg" .$i."'></input></td>
+            <td><input type='file' name='cImg".$i."'></input></td>
+            </tr>";
+            $i++;
+          }
+          if(isset($_POST['Next']))
+          {
+            $_SESSION['ua'] = $_POST['candUa'];
+            echo "<script>document.getElementById('create1').style.display='none'</script>";
+            echo "<script>document.getElementById('create2').style.display='block'</script>";
+            echo "<script>document.getElementById('1Sel').style.background='#FFC107'</script>";
+            echo "<script>document.getElementById('2Sel').style.background='#FFC107'</script>";
+            echo "<script>document.getElementById('2Sel').style.transition='2s ease-out'</script>";            
+          }
 
-     	?>
+        ?>
      	</table>
      	<button type="Submit" class="btn btn-primary mt-5 offset-10 col-2" name="Next2">Next</button>
      </form>
@@ -159,28 +171,41 @@ include "backend/connection.php";?>
      	</div>
      	<div class="form-group" id="vProof">
      		<label for="campDd">Verification Proof:</label>
-     		<input class="form-control" type="Number" id="campDd" name="campDued">
+     		<!-- <input class="form-control" type="Number" id="campDd" name="campDued"> -->
+        <select class="form-control" name="candVP"">
+          <option value="Aadhar">Aadhar</option>
+          <option value="PAN">PAN CARD</option>
+          <option value="Driving">Driving License</option>
+        </select>
      	</div>
      	<button type="Submit" class="btn btn-primary mt-5 offset-10 col-2" name="Submit">Submit</button>
      	</form>
      </div>
-     <!-- PHP FOR NEXT1 -->
-	<?php
-		if(isset($_POST['Next']))
-		{
-			echo "<script>document.getElementById('create1').style.display='none'</script>";
-			echo "<script>document.getElementById('create2').style.display='block'</script>";
-		}
-	?>
 
 	<!-- PHP FOR NEXT2 -->
 	<?php
-		if(isset($_POST['Next2']))
+    // GLOBAL $count;
+		// print_r($_SESSION);
+    if(isset($_POST['Next2']))
 		{
+      if($_SESSION['ua'] == 'Verified')
+      {
+        echo "<script>document.getElementById('vProof').style.display='Block'</script>"; 
+      }else{
+        echo "<script>document.getElementById('vProof').style.display='None'</script>";
+      }
 			echo "<script>document.getElementById('create1').style.display='none'</script>";
 			echo "<script>document.getElementById('create2').style.display='none'</script>";
 			echo "<script>document.getElementById('create3').style.display='block'</script>";
-		}
+		  echo "<script>document.getElementById('2Sel').style.background='#FFC107'</script>";
+      echo "<script>document.getElementById('3Sel').style.background='#FFC107'</script>";
+      echo "<script>document.getElementById('3Sel').style.transition='2s ease-out'</script>";
+
+    }
+    if(isset($_POST['Submit']))
+    {
+      $_SESSION['ua'] = '';
+    }
 	?>
       <!-- Optional JavaScript -->
     <!-- <script type="text/javascript">
