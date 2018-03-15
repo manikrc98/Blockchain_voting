@@ -1,6 +1,6 @@
 <?php
     include "connection.php";
-    include_once "TABLE.php";
+    include_once "tables.php";
 
     function login($username,$password){
             global $conn;
@@ -18,19 +18,14 @@
                elseif ($result->num_rows == 1)
                {    
                    
-                        // Cookie setting for Remeber ME
-                        // ob_start();
-                        $expiration = time() + (60*60*24*30*2);
-                        $name=$result->fetch_assoc()['username'];
-                        // echo "test";
-                        // setcookie("test","abc",(time()+(60*60*1)));
-                        setcookie("name",$name,(time() + (60*60*24*30*2)));     //name,value,expiration
-                        $_SESSION['$userName']=$result->fetch_assoc()['username'];
-                        //echo "Welcome " . $_COOKIE['name'];
-                        // echo "hii " . $_COOKIE["name"] . " ";
-                        setcookie('pass',$enc_pass,$expiration);
-                        // ob_end_flush();
-                        // test();
+                    // Cookie setting for Remeber ME
+                    // ob_start();
+                    $expiration = time() + (60*60*24*30*2);
+                    $name=$result->fetch_assoc()['username'];
+                    setcookie('name',$name,$expiration);     //name,value,expiration
+                    // $_SESSION['$userName']=$result->fetch_assoc()['username'];   //not working, should work
+                    setcookie('pass',$enc_pass,$expiration);
+                    // ob_end_flush();
                    
                     
                     //Session Creation
@@ -109,7 +104,6 @@
         setcookie('pass','',$expiration);
         sleep(1.5);
         session_destroy();
-        // setcookie('test','',(time()+(60*60*1)));
         echo " <script>window.location.assign('index.php'); </script>";
     }
 ?>
