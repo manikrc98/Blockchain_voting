@@ -10,7 +10,6 @@ $query = "CREATE TABLE if not exists users2 (
     password TEXT(200) NOT NULL,
     phone int(10) NOT NULL,
     age int(3) NOT NULL,
-    usertype varchar(10) NOT NULL,
     intrest TEXT(200) NOT NULL,
     time_stamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     availids TEXT(100)
