@@ -5,13 +5,13 @@ include "backend/connection.php";?>
     "backend/functions.php";
     session_start();
 
-         if(isset($_POST['logout']))
-             logout();
+    if(isset($_POST['logout']))
+      logout();
 ?>
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
   <head>
-    <!-- Required meta tags -->
+    <!-- Required meta tags -->FROM
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="style.css">

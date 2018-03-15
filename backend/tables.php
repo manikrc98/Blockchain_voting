@@ -10,8 +10,9 @@ $query = "CREATE TABLE if not exists users2 (
     password TEXT(200) NOT NULL,
     phone int(10) NOT NULL,
     age int(3) NOT NULL,
-    intrest TEXT(200) NOT NULL,
+    interest TEXT(200) NOT NULL,
     time_stamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    country TEXT(50) NOT NULL,
     availids TEXT(100)
 )";
 //available ids not normalised
@@ -50,7 +51,7 @@ $query = "alter table candidate add primary key(cid,name)";
 $conn->query($query);
 
 // Foreign key for poll and candidate
-$query = "alter table poll add constraint poll_candidate_cid foreign key(cid) references candidate(cid) ON DELETE CASCADE";
+$query = "alter table poll add constraint poll_candidate_cid foreign key(cid) re ferences candidate(cid) ON DELETE CASCADE";
 $conn->query($query);
 
 //Drop tables using -  drop table users2,poll,candidate;
