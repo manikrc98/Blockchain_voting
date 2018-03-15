@@ -39,17 +39,19 @@ $query = "CREATE TABLE if not exists candidate(
 )";
 $conn->query($query);
 
-$query = "show tables";
-$result = $conn->query($query);
-foreach($result as $i)
-    print_r($i);
-if(!$result){ die(("Error") . $conn->error());}
-if($result){ echo "sucess";}
+// $query = "show tables";
+// $result = $conn->query($query);
+// foreach($result as $i)
+//     print_r($i);
+// if(!$result){ die(("Error") . $conn->error());}
+// if($result){ echo "sucess";}
 
+//  Add two primary key to Candidate
 $query = "alter table candidate add primary key(cid,name)";
 $conn->query($query);
 
+// Foreign key for poll and candidate
 $query = "alter table poll add constraint poll_candidate_cid foreign key(cid) references candidate(cid) ON DELETE CASCADE";
 $conn->query($query);
 
-// drop table users2,poll;
+//Drop tables using -  drop table users2,poll,candidate;
