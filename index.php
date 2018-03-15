@@ -161,15 +161,6 @@
       </form>
 
     </div>
-    <div class="error">
-
-    <?php
-      
-    // if(isset($_POST['login'])) {
-    //     login($_POST['username'],$_POST['password']);
-    // }
-    ?>
-    </div>
     <?php print_r($_COOKIE); ?>
     <div class="container-fluid">
         <div class="display-1 fstyle text-center">
