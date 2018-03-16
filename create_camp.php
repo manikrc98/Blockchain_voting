@@ -7,6 +7,7 @@ include "backend/connection.php";?>
 
          if(isset($_POST['logout']))
              logout();
+           print_r($_SESSION);
 ?>
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
@@ -57,6 +58,9 @@ include "backend/connection.php";?>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">About us</a>
+          </li>
+           <li class="nav-item">
+            <a href="#" class="offset-6 font-weight-bold nav-link text-warning ">Create Campaign</a>
           </li>
           </ul>
         </div>
@@ -204,7 +208,7 @@ include "backend/connection.php";?>
     }
     if(isset($_POST['Submit']))
     {
-      $_SESSION['ua'] = '';
+          $_SESSION['ua'] = ''; 
     }
 	?>
       <!-- Optional JavaScript -->

@@ -44,7 +44,7 @@ include "backend/connection.php";?>
             <a href="#" class="nav-link">About us</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="offset-6 font-weight-bold nav-link text-warning ">Your Campaigns</a>
+            <a href="#" class="offset-6 font-weight-bold nav-link text-warning ">Dashboard</a>
           </li>
           </ul>
         </div>
@@ -54,74 +54,14 @@ include "backend/connection.php";?>
         <div class="dropdown-menu dropdown-menu-right">
             <button class="dropdown-item" type="button" name="edit">Edit Profile</button>
             <button class="dropdown-item" type="button" name="create_camp" onclick="window.location.href='create_camp.php'">Create Campaign</button>
-            <button class="dropdown-item" type="button" name="dashboard" onclick="window.location.href='Dashboard.php'">Dashboard</button>
+            <button class="dropdown-item" type="button" name="dashboard" onclick="window.location.href='dashboard.php'">Dashboard</button>
             <button class="dropdown-item" type="submit" name="logout">Logout</button>
         </div>
         </div>
          </form>
 
       </nav>
-
-
-      
-
-      <!-- CAMPAIGN CARDS -->
-      <div class="row m-0 mb-5">
-        <div class="col-sm-4 mt-3">
-          <div class="card h-100 bg-warning">
-            <div class="card-header">Recently Added</div>
-            <!-- <img class="card-img-top p-2" src="images/university.jpg" style="width:400px;height:250px" alt="Card image cap"> -->
-              <div class="card-body">
-                <h5 class="card-title">University Course Voting</h5>
-                <p class="card-text h-50">A voting campaign to understand student's opinions for introducing a new subject in their designated course.</p>
-                <a href="#" class="btn btn-light w-25">Vote</a>
-              </div>
-          <div class="card-footer">79 Responses</div>
-        </div>
-          </div>
-
-          <div class="col-sm-4 mt-3">
-          <div class="card h-100 bg-success">
-            <div class="card-header">Recently Added</div>
-            <!--<img class="card-img-top" src="..." alt="Card image cap"> -->
-              <div class="card-body">
-                <h5 class="card-title">State Election Voting</h5>
-                <p class="card-text h-50">Voting campaign to choose our chief minister from the participating candidates.</p>
-                <a href="election.php" class="btn btn-light w-25">Vote</a>
-              </div>
-              <div class="card-footer">1449 Responses</div>
-              </div>
-          </div>
-
-          <div class="col-sm-4 mt-3">
-          <div class="card h-100 bg-dark text-white">
-            <div class="card-header">Last Week</div>
-            <!--<img class="card-img-top" src="..." alt="Card image cap"> -->
-              <div class="card-body">
-                <h5 class="card-title">Global Policy Voting</h5>
-                <p class="card-text h-50">Voting campaign to elevate the concern regarding the change in climate</p>
-                <a href="#" class="btn btn-light w-25">Vote</a>
-              </div>
-              <div class="card-footer">14249 Responses</div>
-              </div>
-          </div>
-
-          <div class="col-sm-4 mt-3">
-          <div class="card h-100 bg-primary">
-            <div class="card-header">Last Week</div>
-            <!--<img class="card-img-top" src="..." alt="Card image cap"> -->
-              <div class="card-body">
-                <h5 class="card-title">Vote for special women law </h5>
-                <p class="card-text h-50">Voting campaign to support women, by introducing a special law for them.</p>
-                <a href="#" class="btn btn-light w-25">Vote</a>
-              </div>
-              <div class="card-footer">139 Responses</div>
-              </div>
-          </div>
-      </div>
-
-        
-    <!-- Optional JavaScript -->
+<!-- Optional JavaScript -->
     <script src="./index.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
