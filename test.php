@@ -62,6 +62,7 @@ include "backend/connection.php";?>
             <td><input type='Number' name='cAg" .$i."'></input></td>
             <td><input type='file' name='cImg".$i."'></input></td>
             </tr>";
+            $i++;
           }
         ?>
      	</table>
