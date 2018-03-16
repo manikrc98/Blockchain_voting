@@ -1,2 +1,2 @@
-## Welcome to BlockChain implimentation of Voting App 
+## Welcome to BlockChain implementaion of Voting App 
 
