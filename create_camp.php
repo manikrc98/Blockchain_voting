@@ -7,11 +7,14 @@ include "backend/connection.php";?>
 
     if(isset($_POST['logout']))
       logout();
+      // print_r($_POST);
+      // echo "<br>";
+      // print_r($_SESSION);
 ?>
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
   <head>
-    <!-- Required meta tags -->FROM
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -20,7 +23,7 @@ include "backend/connection.php";?>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Blockchain Voting</title>
-    <style>
+  <style>
       .sstyle{
         margin-top:50px;
       }
@@ -143,18 +146,20 @@ include "backend/connection.php";?>
             <td><input type='Number' name='cAg" .$i."'></input></td>
             <td><input type='file' name='cImg".$i."'></input></td>
             </tr>";
-            $i++;
           }
           if(isset($_POST['Next']))
           {
             $_SESSION['ua'] = $_POST['candUa'];
+            $_SESSION['campName'] = $_POST['campName'];
+            $_SESSION['candNum'] = $_POST['candNum'];
+            $_SESSION['campCat'] = $_POST['campCat'];
+            $_SESSION['candUa'] = $_POST['candUa'];
             echo "<script>document.getElementById('create1').style.display='none'</script>";
             echo "<script>document.getElementById('create2').style.display='block'</script>";
             echo "<script>document.getElementById('1Sel').style.background='#FFC107'</script>";
             echo "<script>document.getElementById('2Sel').style.background='#FFC107'</script>";
             echo "<script>document.getElementById('2Sel').style.transition='2s ease-out'</script>";            
           }
-
         ?>
      	</table>
      	<button type="Submit" class="btn btn-primary mt-5 offset-10 col-2" name="Next2">Next</button>
@@ -165,14 +170,15 @@ include "backend/connection.php";?>
      <div class="container" id="create3">
      	<div class="sstyle col-12"><h3>Other Details</h3></div>
      	<form class="form col-8 mt-4" action="create_camp.php" method="POST">
+       <!-- campDued campDd -->
 		<div class="form-group">
      		<label for="campDd">Campaign Due Date:</label>
-     		<input class="form-control" type="Number" id="campDd" name="campDued" placeholder="Enter Campaign Due Date">
+     		<input class="form-control" type="date" id="campDd" name="campDd" placeholder="Enter Campaign Due Date">
      	</div>
      	<div class="form-group" id="vProof">
      		<label for="campDd">Verification Proof:</label>
-     		<!-- <input class="form-control" type="Number" id="campDd" name="campDued"> -->
-        <select class="form-control" name="candVP"">
+     		<!-- <input class="form-control" type="Number" id="campDd" name="campDd"> -->
+        <select class="form-control" name="userVP">
           <option value="Aadhar">Aadhar</option>
           <option value="PAN">PAN CARD</option>
           <option value="Driving">Driving License</option>
@@ -181,7 +187,7 @@ include "backend/connection.php";?>
      	<button type="Submit" class="btn btn-primary mt-5 offset-10 col-2" name="Submit">Submit</button>
      	</form>
      </div>
-
+          
 	<!-- PHP FOR NEXT2 -->
 	<?php
     // GLOBAL $count;
@@ -200,11 +206,45 @@ include "backend/connection.php";?>
 		  echo "<script>document.getElementById('2Sel').style.background='#FFC107'</script>";
       echo "<script>document.getElementById('3Sel').style.background='#FFC107'</script>";
       echo "<script>document.getElementById('3Sel').style.transition='2s ease-out'</script>";
-
+      
+      //Getting candidiates in Session Variable
+      $rows = $_SESSION['candNum'];
+      $i=1;
+      while($i<=$rows)
+      {
+        $cand = 'cand' . $i;
+        $candAge = $cand . 'age';
+        $candN = 'cN' . $i;
+        $candA = 'cAg' . $i;
+        $_SESSION[$cand] = $_POST[$candN];
+        $_SESSION[$candAge] = $_POST[$candA];
+        $i++;  
+      }
     }
     if(isset($_POST['Submit']))
     {
-      $_SESSION['ua'] = '';
+      camp_create($_POST['campDd']);
+      //Getting candidates in MySQL
+      $campId = $_SESSION['campId'];
+      $rows = $_SESSION['candNum'];
+      $i=1;
+      while($i<=$rows)
+      {
+        $cand = 'cand' . $i;
+        $candA = $cand . 'age';
+        $candN = $_SESSION[$cand];
+        $candAge = $_SESSION[$candA];
+        $query = "insert into candidate(campId,candName,candAge) values ($campID,'$candN',$candAge)";
+        $result = $conn->query($query);
+        if($result === true)
+            {
+                echo "Working, ". $candN ." insterted";
+            }
+            else {
+                echo "Error Occured " . $conn->error ;
+            }
+        $i++;  
+      }
     }
 	?>
       <!-- Optional JavaScript -->

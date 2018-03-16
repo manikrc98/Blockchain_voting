@@ -106,4 +106,31 @@
         session_destroy();
         echo " <script>window.location.assign('index.php'); </script>";
     }
+
+    function camp_create($campDd)
+    {
+        global $conn;
+        $campName = $_SESSION['campName'];
+        $candNum  = $_SESSION['candNum'];
+        $campCat  = $_SESSION['campCat'];
+        $candUa   = $_SESSION['candUa'];
+        // $campDd   = $_POST['campDd'];
+        $querry = "insert into campaign(campName,candNum,campCat,candUa,campDd) values ('$campName',$candNum,'$campCat','$candUa','$campDd')";
+        $result = $conn->query($querry);
+        if($result === true)
+            {
+                echo "Working, insterted";
+            }
+            else {
+                echo "Error Occured " . $conn->error ;
+            }
+        $query = "select campID from campaign where campName = '$campName' and campDd = '$campDd' and campCat = '$campCat' and candUa = '$candUa' and candNum = $candNum";
+        $result = $conn->query($query);
+        $_SESSION['campId'] = $result->fetch_assoc()['campID'];
+    }
+
+    function cand_ins()
+    {
+        
+    }
 ?>

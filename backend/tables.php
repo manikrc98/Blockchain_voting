@@ -20,22 +20,24 @@ $conn->query($query);
 
 //                                          POLL TABLE
 // noc = number of candidates
-$query = "CREATE TABLE if not exists poll(
-    pid int(5) AUTO_INCREMENT UNIQUE NOT NULL,
-    name varchar(100) NOT NULL,
-    resdate date NOT NULL,
-    NOC int(5) NOT NULL,
-    reqid TEXT(100),
-    cid int(5)
+$query = "CREATE TABLE if not exists campaign(
+    campId int(5) AUTO_INCREMENT UNIQUE NOT NULL,
+    campName varchar(100) NOT NULL,
+    campCat varchar(20) NOT NULL,
+    candUa varchar(10) NOT NULL,
+    campDd date NOT NULL,
+    candNum int(5) NOT NULL,
+    userVP TEXT(100)
 )";
 //req ids not noemalised
 $conn->query($query);
 
 //                                          CANDIDATE TABLE
 $query = "CREATE TABLE if not exists candidate(
-    cid int(5) NOT NULL,
-    name varchar(100) NOT NULL ,
-    photo TEXT(300)
+    campID int(5) NOT NULL,
+    candName varchar(100) NOT NULL ,
+    candAge int(3) NOT NULL,
+    candPic TEXT(300)
 )";
 $conn->query($query);
 
@@ -47,11 +49,11 @@ $conn->query($query);
 // if($result){ echo "sucess";}
 
 //  Add two primary key to Candidate
-$query = "alter table candidate add primary key(cid,name)";
+$query = "alter table candidate add primary key(campID,candN)";
 $conn->query($query);
 
 // Foreign key for poll and candidate
-$query = "alter table poll add constraint poll_candidate_cid foreign key(cid) re ferences candidate(cid) ON DELETE CASCADE";
+$query = "alter table candidate add constraint camp_cand_campid foreign key(campId) references campaign(campId) ON DELETE CASCADE";
 $conn->query($query);
 
 //Drop tables using -  drop table users2,poll,candidate;
