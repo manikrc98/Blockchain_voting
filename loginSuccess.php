@@ -1,8 +1,10 @@
 <?php
 //namespace src\be\kunstmaan\multichain;
-include "backend/connection.php";?>
-<?php include
-    "backend/functions.php";
+  include "backend/connection.php";
+?>
+<?php 
+
+  include "backend/functions.php";
     session_start();
 
          if(isset($_POST['logout']))
@@ -24,7 +26,11 @@ include "backend/connection.php";?>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <style type="text/css">
+      body{
+        overflow-x:hidden;
+      }
+    </style>
     <title>Blockchain Voting</title>
   </head>
   <body>
@@ -35,7 +41,7 @@ include "backend/connection.php";?>
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">   <span class="navbar-toggler-icon"></span> 
         </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">  <!-- Collapsible Navbar -->
+        <div class="collapse navbar-collapse col-8" id="collapsibleNavbar">  <!-- Collapsible Navbar -->
           <ul class="offset-sm-1 navbar-nav">
           <li class="nav-item">
             <a href="index.php" class="nav-link">Home</a>
@@ -44,13 +50,13 @@ include "backend/connection.php";?>
             <a href="#" class="nav-link">About us</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="offset-6 font-weight-bold nav-link text-warning ">Your Campaigns</a>
+            <a href="#" class="offset-6 font-weight-bold nav-link text-warning">Your Campaigns</a>
           </li>
           </ul>
         </div>
-         <form action="loginSuccess.php" method="post">
+         <form action="loginSuccess.php" method="post" class="ml-5">
          <div class="dropdown">
-        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><?php echo $_COOKIE['name']; ?></button>
+        <button type="button" class="ml-5 btn btn-warning dropdown-toggle text-center" data-toggle="dropdown"><?php echo $_COOKIE['name']; ?></button>
         <div class="dropdown-menu dropdown-menu-right">
             <button class="dropdown-item" type="button" name="edit">Edit Profile</button>
             <button class="dropdown-item" type="button" name="create_camp" onclick="window.location.href='create_camp.php'">Create Campaign</button>
@@ -66,61 +72,8 @@ include "backend/connection.php";?>
 
 
       
-
-      <!-- CAMPAIGN CARDS -->
       <div class="row m-0 mb-5">
-        <div class="col-sm-4 mt-3">
-          <div class="card h-100 bg-warning">
-            <div class="card-header">Recently Added</div>
-            <!-- <img class="card-img-top p-2" src="images/university.jpg" style="width:400px;height:250px" alt="Card image cap"> -->
-              <div class="card-body">
-                <h5 class="card-title">University Course Voting</h5>
-                <p class="card-text h-50">A voting campaign to understand student's opinions for introducing a new subject in their designated course.</p>
-                <a href="#" class="btn btn-light w-25">Vote</a>
-              </div>
-          <div class="card-footer">79 Responses</div>
-        </div>
-          </div>
-
-          <div class="col-sm-4 mt-3">
-          <div class="card h-100 bg-success">
-            <div class="card-header">Recently Added</div>
-            <!--<img class="card-img-top" src="..." alt="Card image cap"> -->
-              <div class="card-body">
-                <h5 class="card-title">State Election Voting</h5>
-                <p class="card-text h-50">Voting campaign to choose our chief minister from the participating candidates.</p>
-                <a href="election.php" class="btn btn-light w-25">Vote</a>
-              </div>
-              <div class="card-footer">1449 Responses</div>
-              </div>
-          </div>
-
-          <div class="col-sm-4 mt-3">
-          <div class="card h-100 bg-dark text-white">
-            <div class="card-header">Last Week</div>
-            <!--<img class="card-img-top" src="..." alt="Card image cap"> -->
-              <div class="card-body">
-                <h5 class="card-title">Global Policy Voting</h5>
-                <p class="card-text h-50">Voting campaign to elevate the concern regarding the change in climate</p>
-                <a href="#" class="btn btn-light w-25">Vote</a>
-              </div>
-              <div class="card-footer">14249 Responses</div>
-              </div>
-          </div>
-
-          <div class="col-sm-4 mt-3">
-          <div class="card h-100 bg-primary">
-            <div class="card-header">Last Week</div>Description should be taken
-            <!--<img class="card-img-top" src="..." alt="Card image cap"> -->
-              <div class="card-body">
-                <h5 class="card-title">Vote for special women law </h5>
-                <p class="card-text h-50">Voting campaign to support women, by introducing a special law for them.</p>
-                <a href="#" class="btn btn-light w-25">Vote</a>
-              </div>
-              <div class="card-footer">134 Responses</div>
-              </div>
-          </div>
-      </div>
+      <!-- CAMPAIGN CARDS -->
       <?php 
         $query = "select * from campaign";
         $result = $conn->query($query);
@@ -137,8 +90,11 @@ include "backend/connection.php";?>
               $bgcolor = 'bg-warning';
             else if($i['campCat'] == 'Organisational')
               $bgcolor = 'bg-secondary text-white';
+            else
+              $bgcolor = 'bg-light';
           echo "<div class='col-sm-4 mt-3'>
                   <div class='card h-100 " . $bgcolor . " '>
+                    
                     <div class='card-header'>" . $i['campDd'] . "</div>
                       <div class='card-body'>
                         <h5 class='card-title'>Vote for " . $i['campName'] . "</h5>
@@ -147,12 +103,11 @@ include "backend/connection.php";?>
                       </div>
                       <div class='card-footer'>Candidates: ". $i['candNum'] ."</div>
                       </div>
-                  </div>
-                </div>";
+                  </div>";
           }
         }
       ?>
-      
+      </div>
         
     <!-- Optional JavaScript -->
     <script src="./index.js"></script>
