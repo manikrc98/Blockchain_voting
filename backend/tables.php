@@ -2,18 +2,17 @@
 // echo "test";
 include 'connection.php';
 //                                          USERS TABLE
-$query = "CREATE TABLE if not exists users2 (
+$query = "CREATE TABLE if not exists users (
     userid int(5) AUTO_INCREMENT UNIQUE NOT NULL,
     name varchar(100) NOT NULL,
     gender varchar(6) NOT NULL,
     email varchar(200) PRIMARY KEY,
     password TEXT(200) NOT NULL,
-    phone int(10) NOT NULL,
+    phone bigint(50) NOT NULL UNIQUE,
     age int(3) NOT NULL,
     interest TEXT(200) NOT NULL,
-    time_stamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     country TEXT(50) NOT NULL,
-    availids TEXT(100)
+    time_stamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";
 //available ids not normalised
 $conn->query($query);

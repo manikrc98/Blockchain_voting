@@ -102,7 +102,7 @@
         </div>
         <div class="form-group">
           <label for="phone">Phone Number</label>
-          <input type="Number" class="form-control" id="phone" name="phoneN">
+          <input type="Number" class="form-control" id="phone" name="phone">
         </div>
         <div class="form-group">
           <label for="country">Country</label>
@@ -354,7 +354,7 @@
         </div>
         <div class="form-group">
           <label for="Interest" class="font-weight-bold">What kind of campaigns would you like to vote for?</label>
-           <div class="checkbox" name="typeofC">
+           <div class="checkbox" name="interest">
            <label class="mr-2"><input type="checkbox" class="mr-2" value="Political">Political</label>
            <label class="mr-2"><input type="checkbox" class="mr-2" value="Social">Social</label>
            <label class="mr-2"><input type="checkbox" class="mr-2" value="Personal">Personal</label>

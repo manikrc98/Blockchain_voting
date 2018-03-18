@@ -21,7 +21,7 @@
                     // Cookie setting for Remeber ME
                     // ob_start();
                     $expiration = time() + (60*60*24*30*2);
-                    $name=$result->fetch_assoc()['username'];
+                    $name=$result->fetch_assoc()['name'];
                     setcookie('name',$name,$expiration);     //name,value,expiration
                     // $_SESSION['$userName']=$result->fetch_assoc()['username'];   //not working, should work
                     setcookie('pass',$enc_pass,$expiration);
@@ -63,13 +63,19 @@
     function register(){
         global $conn;
         $username=$_POST['name'];
+        $gender = $_POST['gender'];
         $email=$_POST['email'];
         $password=$_POST['password'];
         $password1=$_POST['password1'];
+        $phone=$_POST['phone'];
         $country=$_POST['country'];
+        $age = $_POST['age'];
+        $interest = $_POST['interest'];
+
         if($password===$password1)
         {
             mysqli_real_escape_string($conn,$username);
+            mysqli_real_escape_string($conn,$gender);
             mysqli_real_escape_string($conn,$password);
             mysqli_real_escape_string($conn,$password1);
             mysqli_real_escape_string($conn,$email);
@@ -79,7 +85,7 @@
             $salt = "thisisjustatwentytwo22";
             $hash = $hash . $salt;
             $enc_pass = crypt($password,$hash);
-            $querry="insert into users values('$username','$email','$enc_pass','$country')";
+            $querry="insert into users(name,gender,email,password,phone,age,interest,country) values('$username','$gender','$email','$enc_pass',$phone,$age,'$interest','$country')";
             if($conn->query($querry) === true)
             {
                 echo "Welcome $username , please Login to continue.";

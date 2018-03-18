@@ -94,7 +94,7 @@
               $bgcolor = 'bg-light';
           echo "<div class='col-sm-4 mt-3'>
                   <div class='card h-100 " . $bgcolor . " '>
-                    
+      
                     <div class='card-header'>" . $i['campDd'] . "</div>
                       <div class='card-body'>
                         <h5 class='card-title'>Vote for " . $i['campName'] . "</h5>
