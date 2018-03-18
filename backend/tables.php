@@ -34,7 +34,7 @@ $conn->query($query);
 
 //                                          CANDIDATE TABLE
 $query = "CREATE TABLE if not exists candidate(
-    campID int(5) NOT NULL,
+    campId int(5) NOT NULL,
     candName varchar(100) NOT NULL ,
     candAge int(3) NOT NULL,
     candPic TEXT(300)
@@ -49,7 +49,7 @@ $conn->query($query);
 // if($result){ echo "sucess";}
 
 //  Add two primary key to Candidate
-$query = "alter table candidate add primary key(campID,candN)";
+$query = "alter table candidate add primary key(campId,candName)";
 $conn->query($query);
 
 // Foreign key for poll and candidate

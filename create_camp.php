@@ -7,9 +7,9 @@ include "backend/connection.php";?>
 
     if(isset($_POST['logout']))
       logout();
-      // print_r($_POST);
-      // echo "<br>";
-      // print_r($_SESSION);
+      print_r($_POST);
+      echo "<br>";
+      print_r($_SESSION);
 ?>
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
@@ -146,6 +146,7 @@ include "backend/connection.php";?>
             <td><input type='Number' name='cAg" .$i."'></input></td>
             <td><input type='file' name='cImg".$i."'></input></td>
             </tr>";
+            $i++;
           }
           if(isset($_POST['Next']))
           {
@@ -234,7 +235,7 @@ include "backend/connection.php";?>
         $candA = $cand . 'age';
         $candN = $_SESSION[$cand];
         $candAge = $_SESSION[$candA];
-        $query = "insert into candidate(campId,candName,candAge) values ($campID,'$candN',$candAge)";
+        $query = "insert into candidate(campId,candName,candAge) values ($campId,'$candN',$candAge)";
         $result = $conn->query($query);
         if($result === true)
             {

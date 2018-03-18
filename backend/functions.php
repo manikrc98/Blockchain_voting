@@ -124,12 +124,25 @@
             else {
                 echo "Error Occured " . $conn->error ;
             }
-        $query = "select campID from campaign where campName = '$campName' and campDd = '$campDd' and campCat = '$campCat' and candUa = '$candUa' and candNum = $candNum";
+        $query = "select campId from campaign where campName = '$campName' and campDd = '$campDd' and campCat = '$campCat' and candUa = '$candUa' and candNum = $candNum";
         $result = $conn->query($query);
-        $_SESSION['campId'] = $result->fetch_assoc()['campID'];
+        if($result === true)
+            {
+                echo "Working, insterted";
+            }
+            else {
+                echo "Error Occured " . $conn->error ;
+            }
+        $_SESSION['campId'] = $result->fetch_assoc()['campId'];
+        echo $result->fetch_assoc()['campId'];
     }
 
     function cand_ins()
+    {
+        
+    }
+
+    function query_test($result)
     {
         
     }

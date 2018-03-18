@@ -53,23 +53,22 @@
 				<table class="table table-hover table-bordered text-center">
 					<thead class="thead-dark">
 						<th>Candidate</th>
-						<th>Votes</th>
+						<th>Age</th>
 					</thead>
 					<tbody>
 					<?php
-			//TODO: Make a function
-						$query = "select * from candidates where id = 1";
+			// TODO: Make a function
+						$query = "select * from candidate where campId = 1";
 						$result = $conn->query($query);
-						if(!$result){ die("Query Failed" . $conn->error()); }
-						else
-						{
-								foreach($result as $i)
+						query_test($result);
+						if($result){
+							foreach($result as $i)
 							{
-					echo "<tr>";
-					echo "<td>".$i['name'] ."</td>";
-					echo "<td>" . $i['votes'] . "</td>";
-					echo "</tr>";
-								}
+								echo "<tr>";
+								echo "<td>" . $i['candName'] . "</td>";
+								echo "<td>" . $i['candAge'] . "</td>";
+								echo "</tr>";
+							}
 						}
 					?>
 						<!-- <tr>
