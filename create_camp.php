@@ -235,11 +235,7 @@ include "backend/connection.php";?>
         $candA = $cand . 'age';
         $candN = $_SESSION[$cand];
         $candAge = $_SESSION[$candA];
-<<<<<<< HEAD
         $query = "insert into candidate(campId,candName,candAge) values ($campId,'$candN',$candAge)";
-=======
-        $query = "INSERT into candidate(campId,candName,candAge) VALUES ($campID,'$candN',$candAge)";
->>>>>>> 1cd093c824a48b73b56a87e624ec51e4ead2ec94
         $result = $conn->query($query);
         if($result === true)
             {
