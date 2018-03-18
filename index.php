@@ -119,7 +119,7 @@
             <a href="#" class="nav-link">About us</a>
           </li>
           <li class="nav-item mr-2">
-            <a href="#" class="nav-link d-none d-lg-block" data-toggle="collapse" data-target="#demo">Login Now</a>
+            <a href="login.php" class="nav-link d-lg-block" data-toggle="collapse" data-target="#demo">Login Now</a>
           </li>
           <li class="nav-item mr-2">
             <a href="signup.php" class="nav-link">Sign Up</a>
@@ -172,9 +172,9 @@
             <span class="display-1 head">Your every vote counts,</span><br> <span class="gold">with blockchain</span>
         </div>
         <div class="row mt-5 col-12 mb-4"> 
-        <button type="button" class="btn btn-primary offset-2 col-9 offset-sm-2 col-sm-4 offset-md-3 col-md-3 col-lg-3 offset-xl-4 col-xl-2">Start New Campaign</button>         
+        <a href="create_camp.php" role="button" class="btn btn-primary offset-2 col-9 offset-sm-2 col-sm-4 offset-md-3 col-md-3 col-lg-3 offset-xl-4 col-xl-2">Start New Campaign</a>         
         <div class="col-12 col-sm-1 offset-sm-0 text-center mt-2 "><em><strong>or</strong></em></div>
-        <a href="login.php" class="btn btn-dark offset-4 col-5 offset-sm-0 col-sm-3 col-md-3 col-lg-2 col-xl-1 mt-1" role="button">Vote Now</a>
+        <a href="login.php" class="btn btn-dark offset-4 col-5 offset-sm-0 col-sm-3 col-md-3 col-lg-2 col-xl-1" role="button">Vote Now</a>
         </div>
     </div>
     <!-- Optional JavaScript -->

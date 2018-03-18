@@ -353,25 +353,18 @@
           <input type="Number" class="form-control" id="age" name="age">
         </div>
         <div class="form-group">
-          <label for="Interest">Interests</label>
-          <select class="form-control" name="interests">
-            <option value="Politics">Politics</option>
-            <option value="Global Issues">Global Issues</option>
-            <option value="Social Issues">Social Issues</option>
-            <option value="Sports">Sports</option>
-            <option value="Science">Science</option>
-          </select>
-        </div>
-
-        <div class="form-check">
-        <label>Verification Documents</label>
-        <input class="form-check-input" type="checkbox" id="autoSizingCheck2">
-        <label class="form-check-label" for="autoSizingCheck2">Aadhar Card
-        </div>
+          <label for="Interest" class="font-weight-bold">What kind of campaigns would you like to vote for?</label>
+           <div class="checkbox" name="typeofC">
+           <label class="mr-2"><input type="checkbox" class="mr-2" value="Political">Political</label>
+           <label class="mr-2"><input type="checkbox" class="mr-2" value="Social">Social</label>
+           <label class="mr-2"><input type="checkbox" class="mr-2" value="Personal">Personal</label>
+           <label class="mr-2"><input type="checkbox" class="mr-2" value="Organisational">Organisational</label>
+           </div>
+         </div>
 
         <div class="form-check">
         <input class="form-check-input" type="checkbox" id="autoSizingCheck2">
-        <label class="form-check-label" for="autoSizingCheck2">
+        <label class="form-check-label font-weight-bold" for="autoSizingCheck2">
           Remember me
         </div>
         <button type="submit" class="btn btn-primary mt-5 col-12 text-center" name="signup">Sign in</button>
