@@ -58,7 +58,7 @@
 					<tbody>
 					<?php
 			// TODO: Make a function
-						$query = "select * from candidate where campId = 1";
+						$query = "select * from candidate where campId = 2";
 						$result = $conn->query($query);
 						query_test($result);
 						if($result){
@@ -76,7 +76,7 @@
 			<div class="col-12 form-group row">
 			<select class="form-control col-8 offset-sm-2 col-sm-6 offset-md-3 col-md-4 mr-2" id="sel1">
 		<?php
-			$query = "select * from candidate where campId = 1";
+			$query = "select * from candidate where campId = 2";
 		$result = $conn->query($query);
 		query_test($result);
 		if($result)
