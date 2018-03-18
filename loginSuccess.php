@@ -129,13 +129,13 @@ include "backend/connection.php";?>
         {
           foreach($result as $i)
           {
-            if($i[campCat] == 'Political')
+            if($i['campCat'] == 'Political')
               $bgcolor = 'bg-success';
-            else if($i[campCat] == 'Social')
+            else if($i['campCat'] == 'Social')
               $bgcolor = 'bg-dark text-white';
-            else if($i[campCat] == 'Personal')
+            else if($i['campCat'] == 'Personal')
               $bgcolor = 'bg-warning';
-            else if($i[campCat] == 'Organisational')
+            else if($i['campCat'] == 'Organisational')
               $bgcolor = 'bg-secondary text-white';
           echo "<div class='col-sm-4 mt-3'>
                   <div class='card h-100 " . $bgcolor . " '>
@@ -143,7 +143,7 @@ include "backend/connection.php";?>
                       <div class='card-body'>
                         <h5 class='card-title'>Vote for " . $i['campName'] . "</h5>
                         <p class='card-text h-48'>Description should be taken</p>
-                        <a href='#' class='btn btn-light w-25'>Vote</a>
+                        <a href='election.php?id=" . $i['campId'] . "' class='btn btn-light w-25'>Vote</a>
                       </div>
                       <div class='card-footer'>Candidates: ". $i['candNum'] ."</div>
                       </div>
