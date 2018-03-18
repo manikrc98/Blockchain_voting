@@ -62,6 +62,8 @@ include "backend/connection.php";?>
 
       </nav>
 
+      
+
 
       
 
@@ -108,18 +110,49 @@ include "backend/connection.php";?>
 
           <div class="col-sm-4 mt-3">
           <div class="card h-100 bg-primary">
-            <div class="card-header">Last Week</div>
+            <div class="card-header">Last Week</div>Description should be taken
             <!--<img class="card-img-top" src="..." alt="Card image cap"> -->
               <div class="card-body">
                 <h5 class="card-title">Vote for special women law </h5>
                 <p class="card-text h-50">Voting campaign to support women, by introducing a special law for them.</p>
                 <a href="#" class="btn btn-light w-25">Vote</a>
               </div>
-              <div class="card-footer">139 Responses</div>
+              <div class="card-footer">134 Responses</div>
               </div>
           </div>
       </div>
-
+      <?php 
+        $query = "select * from campaign";
+        $result = $conn->query($query);
+        query_test($result);
+        if($result)
+        {
+          foreach($result as $i)
+          {
+            if($i[campCat] == 'Political')
+              $bgcolor = 'bg-success';
+            else if($i[campCat] == 'Social')
+              $bgcolor = 'bg-dark text-white';
+            else if($i[campCat] == 'Personal')
+              $bgcolor = 'bg-warning';
+            else if($i[campCat] == 'Organisational')
+              $bgcolor = 'bg-secondary text-white';
+          echo "<div class='col-sm-4 mt-3'>
+                  <div class='card h-100 " . $bgcolor . " '>
+                    <div class='card-header'>" . $i['campDd'] . "</div>
+                      <div class='card-body'>
+                        <h5 class='card-title'>Vote for " . $i['campName'] . "</h5>
+                        <p class='card-text h-48'>Description should be taken</p>
+                        <a href='#' class='btn btn-light w-25'>Vote</a>
+                      </div>
+                      <div class='card-footer'>Candidates: ". $i['candNum'] ."</div>
+                      </div>
+                  </div>
+                </div>";
+          }
+        }
+      ?>
+      
         
     <!-- Optional JavaScript -->
     <script src="./index.js"></script>

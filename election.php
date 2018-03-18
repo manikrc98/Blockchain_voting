@@ -71,35 +71,19 @@
 							}
 						}
 					?>
-						<!-- <tr>
-							<td>Manik</td>
-							<td id="candidate-1"></td>
-						</tr>
-						<tr>
-							<td>Akshat</td>
-							<td id="candidate-2"></td>
-						</tr>
-						<tr>
-							<td>Ashwin</td>
-							<td id="candidate-3"></td>
-						</tr>
-						<tr>
-							<td>Chahat</td>
-							<td id="candidate-4"></td>
-						</tr> -->
 					</tbody>
 				</table>
 			<div class="col-12 form-group row">
 			<select class="form-control col-8 offset-sm-2 col-sm-6 offset-md-3 col-md-4 mr-2" id="sel1">
 		<?php
-			$query = "select * from candidates where id = 1";
+			$query = "select * from candidate where campId = 1";
 		$result = $conn->query($query);
-		if(!$result){ die("Query Failed" . $conn->error()); }
-		else
+		query_test($result);
+		if($result)
 		{
 			foreach($result as $i)
 			{
-				echo "<option>".$i['name'] ."</option>";
+				echo "<option>".$i['candName'] ."</option>";
 			}
 		}
 		?>
