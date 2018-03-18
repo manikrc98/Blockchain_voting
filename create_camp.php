@@ -106,6 +106,10 @@ include "backend/connection.php";?>
      			<option value="Organisational">Organisational</option>
      		</select>
      	</div>
+      <label for="description">Describe Your Campaign</label>
+      <div class="form-group">
+      <textarea class="form-control" id="description" rows="3"></textarea>
+      </div>
      	<div class="form-group">
      		<label for="campCd">Number of Candidates</label>
      		<input class="form-control" type="Number" id="campCd" name="candNum" placeholder="Enter Number of Candidate Here">
