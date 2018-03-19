@@ -188,8 +188,8 @@
     function read_config()
 	{
 		$config=array();
-        $contents=file_get_contents('/var/www/html/multichain-web-demo/config.txt');
-        //$contents=file_get_contents('config.txt');
+        // $contents=file_get_contents('/var/www/html/multichain-web-demo/config.txt');
+        $contents=file_get_contents('config.txt');
 		$lines=explode("\n", $contents);
 		
 		foreach ($lines as $line) {

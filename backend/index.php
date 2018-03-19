@@ -123,13 +123,20 @@
 				// $to=$_POST['to'];
 
 			}
-
-	if (@$_POST['sendasset']) {		
-			$success=no_displayed_error_result($sendtxid, multichain('sendassetfrom',
-				'1RBXAS3V9VKq48Z167enL2iSngXjdD6KMGqr2H', '19TMMf8r5NBSN5qdz6fK71vjDSkTBrnyKo9nSe', 'vCoin', 50));	
-		if ($success)
-			output_success_text('Asset successfully sent in transaction '.$sendtxid);
-	}
+			function sendvCoin($from,$to,$qty)
+			{
+				$success=no_displayed_error_result($sendtxid, multichain('sendassetfrom',
+					$from,$to,'vCoin',$qty));	
+				if ($success)
+					output_success_text('Asset successfully sent in transaction '.$sendtxid);
+			}
+			function sendasset($from,$to,$assetName,$qty)
+			{
+				$success=no_displayed_error_result($sendtxid, multichain('sendassetfrom',
+					$from,$to,$assetName,$qty));	
+				if ($success)
+					output_success_text('Asset successfully sent in transaction '.$sendtxid);
+			}
 ?>
 
 
