@@ -23,10 +23,10 @@
 	}
 ?>
 	
-<link rel="stylesheet" href="bootstrap.min.css">
-		<link rel="stylesheet" href="styles.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
+		<!-- <link rel="stylesheet" href="styles.css"> -->
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
 </head>
 </html>
 <body>
@@ -116,18 +116,18 @@
 ?>
 
 
-					<form class="form-horizontal" method="post" action="<?php echo chain_page_url_html($_SESSION['crPage'],$chain)?>">
-						<div class="form-group">
-							<div class="col-xs-12">
-								<!-- <input class="btn btn-default" name="getnewaddress" type="submit" value="Get new address"> -->
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-sm-offset-3 col-sm-9">
-								<input class="btn btn-default" type="submit" name="sendasset" value="Send Asset">
-							</div>
-						</div>
-					</form>
+					<!-- <form class="form-horizontal" method="post" action="<?php echo chain_page_url_html($_SESSION['crPage'],$chain)?>"> -->
+						<!-- <div class="form-group"> -->
+							<!-- <div class="col-xs-12"> -->
+								<input class="btn btn-default" name="getnewaddress" type="submit" value="Get new address">
+							<!-- </div> -->
+						<!-- </div> -->
+						<!-- <div class="form-group"> -->
+							<!-- <div class="col-sm-offset-3 col-sm-9"> -->
+								<!-- <input class="btn btn-default" type="submit" name="sendasset" value="Send Asset"> -->
+							<!-- </div> -->
+						<!-- </div> -->
+					<!-- </form> -->
 
 </body>
 </html>
