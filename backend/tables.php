@@ -58,7 +58,15 @@ $query = "CREATE TABLE if not exists userCampHistory(
 $conn->query($query);
 
 
-$query = "alter table userCamp add Unique key(campId,candName)";
+$query = "alter table userCampHistory add Unique key(campId,userid)";
+$conn->query($query);
+
+
+$query = "alter table userCampHistory add constraint hist_camp_campId foreign key(campId) references campaign(campId) ON DELETE CASCADE";
+$conn->query($query);
+
+
+$query = "alter table userCampHistory add constraint hist_users_userid foreign key(userid) references users(userid) ON DELETE CASCADE";
 $conn->query($query);
 // $query = "show tables";
 // $result = $conn->query($query);
