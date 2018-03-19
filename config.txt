@@ -1,0 +1,7 @@
+# Define your MultiChain node credentials below.
+
+voting.name=votingCoin                   # name to display in the web interface
+voting.rpchost=localhost              # IP address of MultiChain node
+voting.rpcport=4324                  # usually default-rpc-port from params.dat
+voting.rpcuser=multichainrpc          # username for RPC from multichain.conf
+voting.rpcpassword=6kmoSoBtebgPNKJz1zPC2ADEehyoEuakpkCexBNmqmwN                   # password for RPC from multichain.conf

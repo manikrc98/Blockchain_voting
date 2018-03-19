@@ -7,7 +7,7 @@
     include "backend/index.php";    
     print_r($_POST);
     print_r($_SESSION);
-    print_r($_POST['interest']);
+    // print_r($_POST['interest']);
 ?>
 <!doctype html>
 <html lang="en">
