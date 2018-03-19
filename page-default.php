@@ -1,21 +1,3 @@
-<?php 
-
-    require_once 'functions.php';    
-    $config=read_config();
-    print_r($config);
-    $chain=@$_GET['chain'];
-    // echo "$chain";
-    // echo html($chain);
-	
-	if (strlen($chain))
-		$name=@$config[$chain]['name'];
-	else
-        $name='nw';
-    echo "$name";
-?>
-
-
-
 <?php
 	if (@$_POST['getnewaddress'])
 		no_displayed_error_result($getnewaddress, multichain('getnewaddress'));
@@ -26,8 +8,7 @@
 				<div class="col-sm-6">
 					<h3>My Node</h3>
 <?php
-    $getinfo=multichain_getinfo();
-    print_r($getinfo);
+	$getinfo=multichain_getinfo();
 
 	if (is_array($getinfo)) {
 ?>

@@ -1,6 +1,7 @@
 <?php
     include "connection.php";
     include_once "tables.php";
+    // include "index.php";
 
     function login($username,$password){
             global $conn;
@@ -83,10 +84,24 @@
             //Hashing Function
             $hash = "$2y$10$";
             $salt = "thisisjustatwentytwo22";
+            $uwaddress = $_SESSION['uwAddress'];
+            echo "uw address is ".$uwaddress;
             $hash = $hash . $salt;
             $enc_pass = crypt($password,$hash);
-            $querry="insert into users(name,gender,email,password,phone,age,interest,country) values('$username','$gender','$email','$enc_pass',$phone,$age,'$interest','$country')";
-            if($conn->query($querry) === true)
+            $querry="insert into users(name,gender,email,password,phone,age,country,uwAddress) values('$username','$gender','$email','$enc_pass',$phone,$age,'$country','$uwaddress')";
+            $res = $conn->query($querry);
+            $query1 = "select userid from users where email='$email'";
+            $result = $conn->query($query1);
+            query_test($result);
+            $uid = $result->fetch_assoc()['userid'];
+            echo "user id is" . $uid;
+            foreach($interest as $i){
+                echo $i;
+                $query2 = "INSERT INTO interest(userid,iName) values($uid,'$i')";
+                $result2 = $conn->query($query2);
+                query_test($result2);
+            }
+            if($res && $result && $result2 == true)
             {
                 echo "Welcome $username , please Login to continue.";
             }
@@ -185,7 +200,7 @@
 	{
 		$config=array();
 		
-		$contents=file_get_contents('config.txt');
+		$contents=file_get_contents('/var/www/html/multichain-web-demo/config.txt');
 		$lines=explode("\n", $contents);
 		
 		foreach ($lines as $line) {
@@ -288,9 +303,9 @@
 		return htmlspecialchars($string);
 	}
 	
-	function chain_page_url_html($chain, $page=null, $params=array())
+	function chain_page_url_html($crPage,$chain, $page=null, $params=array())
 	{
-		$url='./?chain='.$chain;
+		$url='./'.$crPage.'?chain='.$chain;
 		
 		if (strlen($page))
 			$url.='&page='.$page;

@@ -1,7 +1,13 @@
-<?php include "backend/connection.php"; ?>
+<?php include "backend/connection.php";
+      session_start(); 
+      $_SESSION['crPage'] = 'signup.php';    
+?>
 <?php
     include "backend/functions.php";
-    session_start();
+    include "backend/index.php";    
+    print_r($_POST);
+    print_r($_SESSION);
+    print_r($_POST['interest']);
 ?>
 <!doctype html>
 <html lang="en">
@@ -58,7 +64,8 @@
     <div class="error">
      <?php
      if(isset($_POST['signup']))
-     {
+     {   
+         newAddress();
          register();
      }
     ?>
@@ -354,11 +361,11 @@
         </div>
         <div class="form-group">
           <label for="Interest" class="font-weight-bold">What kind of campaigns would you like to vote for?</label>
-           <div class="checkbox" name="interest">
-           <label class="mr-2"><input type="checkbox" class="mr-2" value="Political">Political</label>
-           <label class="mr-2"><input type="checkbox" class="mr-2" value="Social">Social</label>
-           <label class="mr-2"><input type="checkbox" class="mr-2" value="Personal">Personal</label>
-           <label class="mr-2"><input type="checkbox" class="mr-2" value="Organisational">Organisational</label>
+           <div class="checkbox" >
+           <label class="mr-2"><input type="checkbox" name="interest[]" class="mr-2" value="Political">Political</label>
+           <label class="mr-2"><input type="checkbox" name="interest[]" class="mr-2" value="Social">Social</label>
+           <label class="mr-2"><input type="checkbox" name="interest[]" class="mr-2" value="Personal">Personal</label>
+           <label class="mr-2"><input type="checkbox" name="interest[]" class="mr-2" value="Organisational">Organisational</label>
            </div>
          </div>
 
