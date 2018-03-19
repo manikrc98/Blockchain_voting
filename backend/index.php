@@ -101,7 +101,7 @@
 			$address = array('address' => $address);
 			}		
 			$_SESSION['uwAddress'] = $address['address'];
-			echo "New Address is " . $_SESSION['uwAddress'];
+			return $address['address'];
 			// echo $ismine ? 'not working' : ' (watch-only)';
 		}
 
