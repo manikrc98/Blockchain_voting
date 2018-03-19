@@ -5,8 +5,8 @@
 <?php
     include "backend/functions.php";
     include "backend/index.php";    
-    print_r($_POST);
-    print_r($_SESSION);
+    // print_r($_POST);
+    // print_r($_SESSION);
     // print_r($_POST['interest']);
 ?>
 <!doctype html>
@@ -63,11 +63,12 @@
       </nav>
     <div class="error">
      <?php
-     grantPermissions('136QujpeDjvcqiNtMwrpKWHDaZ4QqmJEFcvu5S','1ZUfHd7euWD48FCq2Lj5uHZQBKs3r4P4qYGM8Y','send');
-     grantPermissions('136QujpeDjvcqiNtMwrpKWHDaZ4QqmJEFcvu5S','1ZUfHd7euWD48FCq2Lj5uHZQBKs3r4P4qYGM8Y','receive');
      if(isset($_POST['signup']))
      {   
-         newAddress();
+         $adrs = newAddress();
+         echo $adrs;
+        //  sleep(2);
+         grantPermissions('1RBXAS3V9VKq48Z167enL2iSngXjdD6KMGqr2H',$adrs,'send');
          register();
      }
     ?>

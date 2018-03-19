@@ -2,16 +2,16 @@
 
     require_once 'backend/functions.php';    
     $config=read_config();
-    print_r($config);
+    // print_r($config);
     $chain=@$_GET['chain'];
-    echo "$chain";
+    // echo "$chain";
     // echo html($chain);
 	
 	if (strlen($chain))
 		$name=@$config[$chain]['name'];
 	else
         $name='';
-    echo $name;
+    // echo $name;
 ?>
 <head>
 
@@ -101,6 +101,9 @@
 			$address = array('address' => $address);
 			}		
 			$_SESSION['uwAddress'] = $address['address'];
+			$adrs = $address['address'];
+			// sleep(2);
+			grantPermissions('1RBXAS3V9VKq48Z167enL2iSngXjdD6KMGqr2H',$adrs,'receive');
 			return $address['address'];
 			// echo $ismine ? 'not working' : ' (watch-only)';
 		}
