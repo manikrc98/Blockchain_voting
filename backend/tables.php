@@ -49,6 +49,17 @@ $query = "CREATE TABLE if not exists candidate(
 )";
 $conn->query($query);
 
+//                                          User Campaign History
+$query = "CREATE TABLE if not exists userCampHistory(
+    uchid  int(5) AUTO_INCREMENT PRIMARY KEY,
+    userid int(5) NOT NULL,
+    campID int(5) NOT NULL
+)";
+$conn->query($query);
+
+
+$query = "alter table userCamp add Unique key(campId,candName)";
+$conn->query($query);
 // $query = "show tables";
 // $result = $conn->query($query);
 // foreach($result as $i)
