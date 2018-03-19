@@ -98,7 +98,7 @@
                     <div class='card-header'>" . $i['campDd'] . "</div>
                       <div class='card-body'>
                         <h5 class='card-title'>Vote for " . $i['campName'] . "</h5>
-                        <p class='card-text h-48'>Description should be taken</p>
+                        <p class='card-text h-48'>".$i['campDesc']."</p>
                         <a href='election.php?id=" . $i['campId'] . "' class='btn btn-light w-25'>Vote</a>
                       </div>
                       <div class='card-footer'>Candidates: ". $i['candNum'] ."</div>

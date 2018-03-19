@@ -106,9 +106,9 @@ include "backend/connection.php";?>
      			<option value="Organisational">Organisational</option>
      		</select>
      	</div>
-      <label for="description">Describe Your Campaign</label>
+      <label for="description">Describe Your Campaign (50 Characters Allowed )</label>
       <div class="form-group">
-      <textarea class="form-control" id="description" rows="3"></textarea>
+      <textarea class="form-control" id="description" rows="3" name="campDesc"></textarea>
       </div>
      	<div class="form-group">
      		<label for="campCd">Number of Candidates</label>
@@ -159,6 +159,7 @@ include "backend/connection.php";?>
             $_SESSION['candNum'] = $_POST['candNum'];
             $_SESSION['campCat'] = $_POST['campCat'];
             $_SESSION['candUa'] = $_POST['candUa'];
+            $_SESSION['campDesc'] = $_POST['campDesc'];
             echo "<script>document.getElementById('create1').style.display='none'</script>";
             echo "<script>document.getElementById('create2').style.display='block'</script>";
             echo "<script>document.getElementById('1Sel').style.background='#FFC107'</script>";

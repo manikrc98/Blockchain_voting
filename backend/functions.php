@@ -136,24 +136,13 @@
         $campCat  = $_SESSION['campCat'];
         $candUa   = $_SESSION['candUa'];
         // $campDd   = $_POST['campDd'];
-        $querry = "insert into campaign(campName,candNum,campCat,candUa,campDd) values ('$campName',$candNum,'$campCat','$candUa','$campDd')";
+        $campDesc = $_SESSION['campDesc'];
+        $querry = "insert into campaign(campName,candNum,campCat,candUa,campDd,campDesc) values ('$campName',$candNum,'$campCat','$candUa','$campDd','$campDesc')";
         $result = $conn->query($querry);
-        if($result === true)
-            {
-                echo "Working, insterted";
-            }
-            else {
-                echo "Error Occured " . $conn->error ;
-            }
+        query_test($result);
         $query = "select campId from campaign where campName = '$campName' and campDd = '$campDd' and campCat = '$campCat' and candUa = '$candUa' and candNum = $candNum";
         $result = $conn->query($query);
-        if($result === true)
-            {
-                echo "Working, insterted";
-            }
-            else {
-                echo "Error Occured " . $conn->error ;
-            }
+        query_test($result);
         $_SESSION['campId'] = $result->fetch_assoc()['campId'];
         echo $result->fetch_assoc()['campId'];
     }

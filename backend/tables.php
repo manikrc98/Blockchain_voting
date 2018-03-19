@@ -33,9 +33,9 @@ $query = "CREATE TABLE if not exists campaign(
     candUa varchar(10) NOT NULL,
     campDd date NOT NULL,
     candNum int(5) NOT NULL,
+    campDesc text(50) NOT NULL,
     userVP TEXT(100)
 )";
-//req ids not noemalised
 $conn->query($query);
 
 //                                          CANDIDATE TABLE
