@@ -63,6 +63,8 @@
       </nav>
     <div class="error">
      <?php
+     grantPermissions('136QujpeDjvcqiNtMwrpKWHDaZ4QqmJEFcvu5S','1ZUfHd7euWD48FCq2Lj5uHZQBKs3r4P4qYGM8Y','send');
+     grantPermissions('136QujpeDjvcqiNtMwrpKWHDaZ4QqmJEFcvu5S','1ZUfHd7euWD48FCq2Lj5uHZQBKs3r4P4qYGM8Y','receive');
      if(isset($_POST['signup']))
      {   
          newAddress();

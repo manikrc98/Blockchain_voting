@@ -105,7 +105,24 @@
 			// echo $ismine ? 'not working' : ' (watch-only)';
 		}
 
+		function grantPermissions($from,$to,$permissions){
 
+
+						$success=no_displayed_error_result($permissiontxid, multichain('grantfrom',
+						$from, $to ,$permissions));	
+					
+					
+
+				// elseif ($_POST['operation']=='revoke')
+				// 	$success=no_displayed_error_result($permissiontxid, multichain('revokefrom',
+				// 		$_POST['from'], $_POST['to'], implode(',', $permissions)));
+						
+				// if ($success)
+				// 	output_success_text('Permissions successfully changed in transaction '.$permissiontxid);
+
+				// $to=$_POST['to'];
+
+			}
 
 	if (@$_POST['sendasset']) {		
 			$success=no_displayed_error_result($sendtxid, multichain('sendassetfrom',
