@@ -85,10 +85,10 @@
             $hash = "$2y$10$";
             $salt = "thisisjustatwentytwo22";
             $uwaddress = $_SESSION['uwAddress'];
-            echo "uw address is ".$uwaddress;
+            // echo "uw address is ".$uwaddress;
             $hash = $hash . $salt;
             $enc_pass = crypt($password,$hash);
-            $querry="insert into users(name,gender,email,password,phone,age,country,uwAddress) values('$username','$gender','$email','$enc_pass',$phone,$age,'$country','$uwaddress')";
+            $querry="insert into users(name,gender,email,password,phone,age,country,uwaddress) values('$username','$gender','$email','$enc_pass',$phone,$age,'$country','$uwaddress')";
             $res = $conn->query($querry);
             $query1 = "select userid from users where email='$email'";
             $result = $conn->query($query1);
@@ -188,8 +188,8 @@
     function read_config()
 	{
 		$config=array();
-		
-		$contents=file_get_contents('config.txt');
+        $contents=file_get_contents('/var/www/html/multichain-web-demo/config.txt');
+        //$contents=file_get_contents('config.txt');
 		$lines=explode("\n", $contents);
 		
 		foreach ($lines as $line) {

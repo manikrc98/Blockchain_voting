@@ -1,10 +1,11 @@
 <?php
 //namespace src\be\kunstmaan\multichain;
-include "backend/connection.php";?>
-<?php include
-    "backend/functions.php";
-    session_start();
-
+include "backend/connection.php";
+session_start();
+    $_SESSION['crPage'] = 'create_camp.php';
+?>
+<?php 
+    include "backend/functions.php";
     if(isset($_POST['logout']))
       logout();
       print_r($_POST);
@@ -224,11 +225,12 @@ include "backend/connection.php";?>
         $candA = 'cAg' . $i;
         $_SESSION[$cand] = $_POST[$candN];
         $_SESSION[$candAge] = $_POST[$candA];
-        $i++;  
+        $i++;
       }
     }
     if(isset($_POST['Submit']))
     {
+      include "backend/index.php";
       camp_create($_POST['campDd']);
       //Getting candidates in MySQL
       $campId = $_SESSION['campId'];
@@ -240,7 +242,8 @@ include "backend/connection.php";?>
         $candA = $cand . 'age';
         $candN = $_SESSION[$cand];
         $candAge = $_SESSION[$candA];
-        $query = "insert into candidate(campId,candName,candAge) values ($campId,'$candN',$candAge)";
+        $cwAddress = newAddress();
+        $query = "insert into candidate(campId,candName,candAge,cwAddress) values ($campId,'$candN',$candAge,'$cwAddress')";
         $result = $conn->query($query);
         if($result === true)
             {

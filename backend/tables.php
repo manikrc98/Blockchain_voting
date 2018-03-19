@@ -44,7 +44,8 @@ $query = "CREATE TABLE if not exists candidate(
     campId int(5) NOT NULL,
     candName varchar(100) NOT NULL ,
     candAge int(3) NOT NULL,
-    candPic TEXT(300)
+    candPic TEXT(300),
+    cwAddress varchar(150)
 )";
 $conn->query($query);
 

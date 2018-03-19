@@ -6,7 +6,7 @@
 
   include "backend/functions.php";
     session_start();
-
+    print_r($_SESSION);
          if(isset($_POST['logout']))
              logout();
 ?>
