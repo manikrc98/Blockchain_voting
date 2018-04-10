@@ -169,7 +169,7 @@
     <?php print_r($_COOKIE); ?>
     <div class="container-fluid">
         <div class="display-1 fstyle text-center">
-            <span class="display-1 head">Your every vote counts,</span><br> <span class="gold">with blockchain</span>
+            <span class="display-1 head">Your vote counts,</span><br> <span class="gold">with blockchain</span>
         </div>
         <div class="row mt-5 col-12 mb-4"> 
         <a href="create_camp.php" role="button" class="btn btn-primary offset-2 col-9 offset-sm-2 col-sm-4 offset-md-3 col-md-3 col-lg-3 offset-xl-4 col-xl-2">Start New Campaign</a>         

@@ -1,6 +1,6 @@
 <?php
     include "connection.php";
-    include_once "tables.php";
+    // include_once "tables.php";
     // include "index.php";
 
     function login($username,$password){

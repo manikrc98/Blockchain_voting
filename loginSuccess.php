@@ -129,7 +129,7 @@
               
                  echo $uwad;
                  sendvCoin('136QujpeDjvcqiNtMwrpKWHDaZ4QqmJEFcvu5S',$uwad,1); 
-                 echo " <script>window.location.assign('election.php?chain=".$_GET['chain']."&id=1'); </script>"; 
+                 echo " <script>window.location.assign('election.php?chain=".$_GET['chain']."&id=".       $i['campId']."'); </script>"; 
                }
           }
         }

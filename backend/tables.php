@@ -1,6 +1,7 @@
 <?php
 // echo "test";
-// include 'connection.php';
+include 'connection.php';
+
 //                                          USERS TABLE
 $query = "CREATE TABLE if not exists users (
     userid int(5) AUTO_INCREMENT UNIQUE NOT NULL,
