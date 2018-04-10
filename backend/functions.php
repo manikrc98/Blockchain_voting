@@ -23,9 +23,12 @@
                     // ob_start();
                     $expiration = time() + (60*60*24*30*2);
                     $name=$result->fetch_assoc()['name'];
+                    $email=$result->fetch_assoc()['email'];
+
                     setcookie('name',$name,$expiration);     //name,value,expiration
                     // $_SESSION['$userName']=$result->fetch_assoc()['username'];   //not working, should work
                     setcookie('pass',$enc_pass,$expiration);
+                    setcookie('email',$username,$expiration);
                     // ob_end_flush();
                    
                     
@@ -125,7 +128,9 @@
         setcookie('pass','',$expiration);
         sleep(1.5);
         session_destroy();
+        $_SESSION['crPage']='index.php';
         echo " <script>window.location.assign('index.php'); </script>";
+
     }
 
     function camp_create($campDd)

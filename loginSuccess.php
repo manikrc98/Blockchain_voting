@@ -1,11 +1,14 @@
 <?php
 //namespace src\be\kunstmaan\multichain;
+  session_start();
+  $_SESSION['crPage'] = 'loginSuccess.php';
   include "backend/connection.php";
 ?>
 <?php 
 
   include "backend/functions.php";
-    session_start();
+  include "backend/index.php";  
+
     print_r($_SESSION);
          if(isset($_POST['logout']))
              logout();
@@ -75,12 +78,13 @@
       <div class="row m-0 mb-5">
       <!-- CAMPAIGN CARDS -->
       <?php 
+      global $conn;
         $query = "select * from campaign";
-        $result = $conn->query($query);
-        query_test($result);
-        if($result)
+        $res = $conn->query($query);
+        query_test($res);
+        if($res)
         {
-          foreach($result as $i)
+          foreach($res as $i)
           {
             if($i['campCat'] == 'Political')
               $bgcolor = 'bg-success';
@@ -91,6 +95,7 @@
             else if($i['campCat'] == 'Organisational')
               $bgcolor = 'bg-secondary text-white';
             else
+              // action='election.php?chain=".$_GET['chain']."&id=" . $i['campId'] . "'
               $bgcolor = 'bg-light';
           echo "<div class='col-sm-4 mt-3'>
                   <div class='card h-100 " . $bgcolor . " '>
@@ -99,13 +104,37 @@
                       <div class='card-body'>
                         <h5 class='card-title'>Vote for " . $i['campName'] . "</h5>
                         <p class='card-text h-48'>".$i['campDesc']."</p>
-                        <a href='election.php?id=" . $i['campId'] . "' class='btn btn-light w-25'>Vote</a>
+                        <form method='POST' class='form'>
+                        <button type='Submit' name='getvCoin' class='btn btn-light w-25'>Vote</button>
+                        </form>
                       </div>
                       <div class='card-footer'>Candidates: ". $i['candNum'] ."</div>
                       </div>
-                  </div>";
+                  </div>";  
+
+          if(isset($_POST['getvCoin'])){
+                 // echo "string";
+                  print_r($_COOKIE);
+                 $sql = "Select * from users where email = '" . $_COOKIE['email']."'";
+                 echo $sql;
+                 if($result = $conn->query($sql))
+                 {
+                 // if(!$result){die(('Query Failed') . $conn->error());}
+                 // query_test($result);
+                 print_r($result);
+                 while($row = $result->fetch_assoc()){
+                  $uwad = $row['uwaddress'];
+                  echo $uwad;
+                }
+              
+                 echo $uwad;
+                 sendvCoin('136QujpeDjvcqiNtMwrpKWHDaZ4QqmJEFcvu5S',$uwad,1); 
+                 echo " <script>window.location.assign('election.php?chain=".$_GET['chain']."&id=1'); </script>"; 
+               }
           }
         }
+        
+      }
       ?>
       </div>
         

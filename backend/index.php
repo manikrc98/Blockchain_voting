@@ -1,6 +1,6 @@
 <?php 
 
-    require_once 'backend/functions.php';    
+    // require_once 'backend/functions.php';    
     $config=read_config();
     // print_r($config);
     $chain=@$_GET['chain'];
@@ -130,15 +130,13 @@
 			{
 				$success=no_displayed_error_result($sendtxid, multichain('sendassetfrom',
 					$from,$to,'vCoin',$qty));	
-				if ($success)
-					output_success_text('Asset successfully sent in transaction '.$sendtxid);
 			}
 			function sendasset($from,$to,$assetName,$qty)
 			{
 				$success=no_displayed_error_result($sendtxid, multichain('sendassetfrom',
 					$from,$to,$assetName,$qty));	
-				if ($success)
-					output_success_text('Asset successfully sent in transaction '.$sendtxid);
+				// if ($success)
+				// 	output_success_text('Asset successfully sent in transaction '.$sendtxid);
 			}
 ?>
 

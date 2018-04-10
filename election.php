@@ -1,12 +1,17 @@
-<?php include "backend/connection.php";?>
-<?php include
-		"backend/functions.php";
-		session_start();
+<?php
+//namespace src\be\kunstmaan\multichain;
+  session_start();
+  $_SESSION['crPage'] = 'election.php';
+  include "backend/connection.php";
 ?>
-	<?php
-				 if(isset($_POST['logout']))
-					logout();
-	?>
+<?php 
+  include "backend/functions.php";
+  include "backend/index.php";
+  
+  print_r($_SESSION);
+  if(isset($_POST['logout']))
+	logout();  
+?>
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 	<head>
@@ -50,6 +55,7 @@
 				 
 		 </div>
 			<div class="table-responsive col-12 offset-md-3 col-md-6 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6 mt-5">
+			<form class="form" method="POST">
 				<table class="table table-hover table-bordered text-center">
 					<thead class="thead-dark">
 						<th>Candidate</th>
@@ -58,6 +64,7 @@
 					<tbody>
 					<?php
 					$id = $_GET['id'];
+					$_SESSION['uID'] = $id;
 			// TODO: Make a function
 						$query = "select * from candidate where campId = $id";
 						$result = $conn->query($query);
@@ -75,7 +82,7 @@
 					</tbody>
 				</table>
 			<div class="col-12 form-group row">
-			<select class="form-control col-8 offset-sm-2 col-sm-6 offset-md-3 col-md-4 mr-2" id="sel1">
+			<select name="selectedCand" class="form-control col-8 offset-sm-2 col-sm-6 offset-md-3 col-md-4 mr-2" id="sel1">
 		<?php
 			$id = $_GET['id'];
 			$query = "select * from candidate where campId = $id";
@@ -85,7 +92,7 @@
 		{
 			foreach($result as $i)
 			{
-				echo "<option>".$i['candName'] ."</option>";
+				echo "<option value=".$i['candName'] .">".$i['candName'] ."</option>";
 			}
 		}
 		?>
@@ -96,10 +103,35 @@
 			</select>
  
 			<!-- <input type="text" id="candidate" class="col-8 offset-sm-2 col-sm-6 offset-md-3 col-md-4" /> -->
-			<button class="btn btn-warning col-3 col-sm-3 col-md-2" onclick="voteForCandidate()">Vote</button>
+			<button type="submit" name="voteFC" class="btn btn-warning col-3 col-sm-3 col-md-2">Vote</button>
+			</form>
 			</div>
 			</div>
 
+		<?php
+			if(isset($_POST['voteFC']))
+			{
+				$sql = "Select * from users where email = '" . $_COOKIE['email']."'";
+                 if($result = $conn->query($sql))
+                 {
+	                 while($row = $result->fetch_assoc()){
+	                  $uwad = $row['uwaddress'];
+	                 }
+             	 }
+                 
+                 $sql = "Select * from candidate where candName = '".$_POST['selectedCand']."'";	
+                 if($result = $conn->query($sql))
+                 {
+                 		while($row = $result->fetch_assoc()){
+                 	 	$cwad = $row['cwAddress'];
+                 		}
+                 }
+                 echo $_POST['selectedCand'];
+                 echo $uwad,$cwad;
+                 sendvCoin($uwad,$cwad,1); 
+			}
+				
+		?>
 		<!-- Optional JavaScript -->
 		<script src="./index.js"></script>
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
