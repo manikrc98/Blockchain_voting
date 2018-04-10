@@ -166,7 +166,7 @@
       </form>
 
     </div>
-    <?php print_r($_COOKIE); ?>
+    <?php print_r($_COOKIE);print_r($_SESSION); ?>
     <div class="container-fluid">
         <div class="display-1 fstyle text-center">
             <span class="display-1 head">Your vote counts,</span><br> <span class="gold">with blockchain</span>

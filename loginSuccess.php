@@ -1,7 +1,23 @@
 <?php
 //namespace src\be\kunstmaan\multichain;
   session_start();
-  $_SESSION['crPage'] = 'loginSuccess.php';
+  if(isset($_POST['logout']))
+                     {echo "test";
+                      echo "<center>Loging Out of " .$_COOKIE['name']  . " 's account</center>";
+                $expiration = time() - (60*60*24*30*2);
+                setcookie('name','',$expiration);
+                setcookie('pass','',$expiration);
+                sleep(1.5);
+                session_destroy();
+                $_SESSION['crPage']='index.php';
+                echo " <script>window.location.assign('index.php'); </script>";
+                     }
+      
+  // if(!(isset($_POST['logout'])))
+  // {
+  //   echo "not";
+    $_SESSION['crPage'] = 'loginSuccess.php';
+  // }
   include "backend/connection.php";
 ?>
 <?php 
@@ -10,15 +26,9 @@
   include "backend/index.php";  
 
     print_r($_SESSION);
-         if(isset($_POST['logout']))
-             logout();
+    print_r($_COOKIE);
 ?>
-<?php
-// use be\kunstmaan\multichain\MultichainClient;
-// use be\kunstmaan\multichain\MultichainHelper;
 
-    //  $client = new MultichainClient('localhost:9254','akki','akshatah',3);
-?>
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
   <head>
@@ -57,7 +67,7 @@
           </li>
           </ul>
         </div>
-         <form action="loginSuccess.php" method="post" class="ml-5">
+         <form  method="post" class="ml-5">
          <div class="dropdown">
         <button type="button" class="ml-5 btn btn-warning dropdown-toggle text-center" data-toggle="dropdown"><?php echo $_COOKIE['name']; ?></button>
         <div class="dropdown-menu dropdown-menu-right">
@@ -71,7 +81,7 @@
 
       </nav>
 
-      
+
 
 
       
@@ -137,6 +147,11 @@
       }
       ?>
       </div>
+      <?php
+
+      print_r($_POST);
+        
+      ?>
         
     <!-- Optional JavaScript -->
     <script src="./index.js"></script>
