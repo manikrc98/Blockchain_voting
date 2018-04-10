@@ -67,8 +67,12 @@
      {   
          $adrs = newAddress();
          echo $adrs;
-        //  sleep(2);
-         grantPermissions('1RBXAS3V9VKq48Z167enL2iSngXjdD6KMGqr2H',$adrs,'send');
+         // $permissions = array();
+         // $permissions[0] = 'receive';
+         // $permissions[1] = 'send';
+         // print_r($permissions);
+         sleep(2);
+         grantPermissions('136QujpeDjvcqiNtMwrpKWHDaZ4QqmJEFcvu5Sg',$adrs,'send'); 
          register();
      }
     ?>

@@ -115,17 +115,14 @@
                         <h5 class='card-title'>Vote for " . $i['campName'] . "</h5>
                         <p class='card-text h-48'>".$i['campDesc']."</p>
                         <form method='POST' class='form'>
-                        <button type='Submit' name='getvCoin' class='btn btn-light w-25'>Vote</button>
+                        <button type='Submit' name='getvCoin' value='".$i['campId']."' class='btn btn-light w-25'>Vote</button>
                         </form>
                       </div>
                       <div class='card-footer'>Candidates: ". $i['candNum'] ."</div>
                       </div>
-                  </div>";  
-
-          if(isset($_POST['getvCoin'])){
-                 // echo "string";
-                  print_r($_COOKIE);
-                 $sql = "Select * from users where email = '" . $_COOKIE['email']."'";
+                  </div>"; 
+              } 
+                  $sql = "Select * from users where email = '" . $_COOKIE['email']."'";
                  echo $sql;
                  if($result = $conn->query($sql))
                  {
@@ -133,20 +130,24 @@
                  // query_test($result);
                  print_r($result);
                  while($row = $result->fetch_assoc()){
-                  $uwad = $row['uwaddress'];
-                  echo $uwad;
-                }
-              
+                 $uwad = $row['uwaddress'];
                  echo $uwad;
-                 sendvCoin('136QujpeDjvcqiNtMwrpKWHDaZ4QqmJEFcvu5S',$uwad,1); 
-                 echo " <script>window.location.assign('election.php?chain=".$_GET['chain']."&id=".       $i['campId']."'); </script>"; 
+                   }
+                 }
+                 if(isset($_POST['getvCoin'])){
+                  print_r($_COOKIE);
+                  echo $uwad;
+                  echo " <script>window.location.assign('election.php?chain=".$_GET['chain']."&id=".       $_POST['getvCoin']."'); </script>"; 
+                  sendvCoin('136QujpeDjvcqiNtMwrpKWHDaZ4QqmJEFcvu5S',$uwad,1);                 
+                  }
+
+                 
                }
-          }
-        }
-        
-      }
+  
+          
       ?>
       </div>
+
       <?php
 
       print_r($_POST);

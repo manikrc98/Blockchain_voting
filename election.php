@@ -7,7 +7,7 @@
 <?php 
   include "backend/functions.php";
   include "backend/index.php";
-  
+  print_r($_POST);
   print_r($_SESSION);
   if(isset($_POST['logout']))
 	logout();  

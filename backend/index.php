@@ -103,7 +103,8 @@
 			$_SESSION['uwAddress'] = $address['address'];
 			$adrs = $address['address'];
 			// sleep(2);
-			grantPermissions('1RBXAS3V9VKq48Z167enL2iSngXjdD6KMGqr2H',$adrs,'receive');
+			grantPermissions('136QujpeDjvcqiNtMwrpKWHDaZ4QqmJEFcvu5S',$adrs,'receive');
+			grantPermissions('136QujpeDjvcqiNtMwrpKWHDaZ4QqmJEFcvu5S',$adrs,'send');
 			return $address['address'];
 			// echo $ismine ? 'not working' : ' (watch-only)';
 		}
