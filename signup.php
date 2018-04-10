@@ -65,7 +65,7 @@
      <?php
      if(isset($_POST['signup']))
      {   
-         $adrs = newAddress();
+          $adrs = newAddress();
          echo $adrs;
          // $permissions = array();
          // $permissions[0] = 'receive';
@@ -73,7 +73,9 @@
          // print_r($permissions);
          sleep(2);
          grantPermissions('136QujpeDjvcqiNtMwrpKWHDaZ4QqmJEFcvu5Sg',$adrs,'send'); 
-         register();
+         register(); 
+      
+         
      }
     ?>
     </div>
@@ -89,10 +91,10 @@
       <div class="container" id="block">
         <div class="display-2 sstyle col-12 text-center ">Sign Up</div>
         <!--Signup form-->
-        <form name="Register" class="mt-5 form offset-3 col-6 mb-5" method="post" action="signup.php" >
+        <form name="Register" class="mt-5 form offset-3 col-6 mb-5" method="post" action="signup.php">
         <div class="form-group">
           <label for="usr">Name </label>
-          <input type="text" class="form-control" id="usr" name="name">
+          <input type="text" class="form-control" id="usr" pattern="[A-Za-z]{1,30}" title="Name is a text only field which should contain 1 - 30 Characters only" name="name" required>
         </div>
         <div class="form-group">
           <label for="gnr">Gender </label>
@@ -364,7 +366,7 @@
         </div>
         <div class="form-group">
           <label for="age">Age</label>
-          <input type="Number" class="form-control" id="age" name="age">
+          <input type="Number" class="form-control" id="age" min="18" name="age">
         </div>
         <div class="form-group">
           <label for="Interest" class="font-weight-bold">What kind of campaigns would you like to vote for?</label>

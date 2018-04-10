@@ -95,7 +95,7 @@ session_start();
      <form class="form col-8 mt-4" action="create_camp.php" method="POST">
      	<div class="form-group">
      		<label for="campN">Campaign Name:</label>
-     		<input class="form-control" type="text" id="campN" name="campName" placeholder="Enter Campaign Name Here">
+     		<input class="form-control" pattern="[A-Za-z]{1,30}" title="Name is a text only field" type="text" id="campN" name="campName" placeholder="Enter Campaign Name Here" required>
      	</div>
 
      	<div class="form-group">
@@ -109,11 +109,11 @@ session_start();
      	</div>
       <label for="description">Describe Your Campaign (50 Characters Allowed )</label>
       <div class="form-group">
-      <textarea class="form-control" id="description" rows="3" name="campDesc"></textarea>
+      <textarea class="form-control" title="Maximum Characters 50"  maxlength="50" id="description" rows="3" name="campDesc" required></textarea>
       </div>
      	<div class="form-group">
      		<label for="campCd">Number of Candidates</label>
-     		<input class="form-control" type="Number" id="campCd" name="candNum" placeholder="Enter Number of Candidate Here">
+     		<input class="form-control" min="1" type="Number" id="campCd" name="candNum" placeholder="Enter Number of Candidate Here" required>
      	</div>
      	<div class="form-group">
      		<label for="campUa">User Accessibility:</label>
@@ -147,8 +147,8 @@ session_start();
           {
             echo "<tr>
             <td>" .$i. "</td>
-            <td><input type='text' name='cN" .$i."'></input></td>
-            <td><input type='Number' name='cAg" .$i."'></input></td>
+            <td><input type='text' pattern='[A-Za-z]{1,30}' title='Name is a text only field' name='cN" .$i."' required></input></td>
+            <td><input type='Number' name='cAg" .$i."' min='18' required></input></td>
             <td><input type='file' name='cImg".$i."'></input></td>
             </tr>";
             $i++;
@@ -180,13 +180,13 @@ session_start();
        <!-- campDued campDd -->
 		<div class="form-group">
      		<label for="campDd">Campaign Due Date:</label>
-     		<input class="form-control" type="date" id="campDd" name="campDd" placeholder="Enter Campaign Due Date">
+     		<input class="form-control" type="date" id="campDd" name="campDd" placeholder="Enter Campaign Due Date" required>
      	</div>
      	<div class="form-group" id="vProof">
      		<label for="campDd">Verification Proof:</label>
      		<!-- <input class="form-control" type="Number" id="campDd" name="campDd"> -->
         <select class="form-control" name="userVP">
-          <option value="Aadhar">Aadhar</option>
+          <option value="Aadhar" selected>Aadhar</option>
           <option value="PAN">PAN CARD</option>
           <option value="Driving">Driving License</option>
         </select>

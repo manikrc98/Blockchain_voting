@@ -150,7 +150,7 @@
      <form class="col-xl-12 form-inline d-none d-lg-block bg-info pt-2 pb-2" action="index.php" method="post">
          <div class="offset-xl-2 row">
           <label for="usr" class="mr-2 text-white">Email:</label>
-         <input type="text"  id="usr" name="username">
+         <input type="Email"  id="usr" name="username">
          <label for="pwd" class="ml-4 mr-2 text-white">Password:</label>
          <input type="Password" class="form-control" id=pwd name="password">
          <button type="submit" class="btn btn-warning ml-4" name="login" value="Submit">Login</button>
