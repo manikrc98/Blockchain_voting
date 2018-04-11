@@ -2,6 +2,14 @@
 <?php
     include "backend/functions.php";
     session_start();
+    if(isset($_COOKIE['name']))
+    {
+      echo "<script>window.location.assign('loginSuccess.php'); </script>";
+    }
+    // if(!isset($_POST['login']))
+      // $_SESSION['crPage']="login.php";
+    // include "backend/index.php";
+    // print_r($_SESSION);
 ?>
 <!doctype html>
 <html lang="en">
@@ -46,9 +54,9 @@
       </nav>
     <div class="error">
      <?php
-     if(isset($_POST['signup']))
+     // if(isset($_POST['signup']))
      {
-         register();
+         // register();
      }
     ?>
     </div>
@@ -56,14 +64,19 @@
         <?php
         if(isset($_POST['login']))
         {
-            login();
+            login($_POST['username'],$_POST['password']);
+
+            // if($_SESSION['flag']==1){
+            //    $_SESSION['crPage']="loginSuccess.php";
+            // }
+            
         }
         ?>
     </div>
       <!-- LOGIN FORM -->
       <div class="container">
         <div class="display-2 sstyle col-12 text-center">Log In</div>
-        <form class="form offset-3 col-6" action="signup.php" method="post">
+        <form class="form offset-3 col-6" action="login.php" method="post">
           <div class="form-group">
             <label for="usr">Email</label>
             <input type="email" class="form-control" id="usr" name="username">

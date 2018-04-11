@@ -54,11 +54,11 @@
           </li>
           </ul>  
         </div>
-        
+        <!-- onclick="login_visible()" type="button" -->
 
         <div class="col-sm-8" action="signup.php" id="alrdlog">
          <label for="already" class="text-white offset-8">Already have an account?</label>
-         <button onclick="login_visible()" type="button" class="btn btn-warning ml-3">Login</button>
+         <a href="login.php" class="btn btn-warning ml-3">Login</a>
          </div>
       </nav>
     <div class="error">
@@ -83,7 +83,7 @@
         <?php
         if(isset($_POST['login']))
         {
-            login();
+            login($_POST['username'],$_POST['password']);
         }
         ?>
     </div>
@@ -118,7 +118,7 @@
         </div>
         <div class="form-group">
           <label for="phone">Phone Number</label>
-          <input type="Number" class="form-control" id="phone" name="phone">
+          <input type="tel" class="form-control" id="phone" name="phone">
         </div>
         <div class="form-group">
           <label for="country">Country</label>
@@ -378,11 +378,11 @@
            </div>
          </div>
 
-        <div class="form-check">
+       <!--  <div class="form-check">
         <input class="form-check-input" type="checkbox" id="autoSizingCheck2">
         <label class="form-check-label font-weight-bold" for="autoSizingCheck2">
           Remember me
-        </div>
+        </div> -->
         <button type="submit" class="btn btn-primary mt-5 col-12 text-center" name="signup">Sign in</button>
         </form>
       </div>

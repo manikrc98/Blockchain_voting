@@ -2,15 +2,15 @@
 //namespace src\be\kunstmaan\multichain;
   session_start();
   if(isset($_POST['logout']))
-                     {echo "test";
-                      echo "<center>Loging Out of " .$_COOKIE['name']  . " 's account</center>";
-                $expiration = time() - (60*60*24*30*2);
-                setcookie('name','',$expiration);
-                setcookie('pass','',$expiration);
-                sleep(1.5);
-                session_destroy();
-                $_SESSION['crPage']='index.php';
-                echo " <script>window.location.assign('index.php'); </script>";
+                     {
+                        echo "<center>Loging Out of " .$_COOKIE['name']  . " 's account</center>";
+                        $expiration = time() - (60*60*24*30*2);
+                        setcookie('name','',$expiration);
+                        setcookie('pass','',$expiration);
+                        sleep(1.5);
+                        session_destroy();
+                        $_SESSION['crPage']='index.php';
+                        echo " <script>window.location.assign('index.php'); </script>";
                      }
       
   // if(!(isset($_POST['logout'])))
@@ -25,8 +25,8 @@
   include "backend/functions.php";
   include "backend/index.php";  
 
-    print_r($_SESSION);
-    print_r($_COOKIE);
+    // print_r($_SESSION);
+    // print_r($_COOKIE);
 ?>
 
 <!doctype html>
@@ -59,9 +59,9 @@
           <li class="nav-item">
             <a href="index.php" class="nav-link">Home</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="#" class="nav-link">About us</a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a href="#" class="offset-6 font-weight-bold nav-link text-warning">Your Campaigns</a>
           </li>
@@ -71,9 +71,9 @@
          <div class="dropdown">
         <button type="button" class="ml-5 btn btn-warning dropdown-toggle text-center" data-toggle="dropdown"><?php echo $_COOKIE['name']; ?></button>
         <div class="dropdown-menu dropdown-menu-right">
-            <button class="dropdown-item" type="button" name="edit">Edit Profile</button>
+            <!-- <button class="dropdown-item" type="button" name="edit">Edit Profile</button> -->
             <button class="dropdown-item" type="button" name="create_camp" onclick="window.location.href='create_camp.php'">Create Campaign</button>
-            <button class="dropdown-item" type="button" name="dashboard" onclick="window.location.href='Dashboard.php'">Dashboard</button>
+            <!-- <button class="dropdown-item" type="button" name="dashboard" onclick="window.location.href='Dashboard.php'">Dashboard</button> -->
             <button class="dropdown-item" type="submit" name="logout">Logout</button>
         </div>
         </div>
@@ -116,6 +116,7 @@
                         <p class='card-text h-48'>".$i['campDesc']."</p>
                         <form method='POST' class='form'>
                         <button type='Submit' name='getvCoin' value='".$i['campId']."' class='btn btn-light w-25'>Vote</button>
+                        <button type='Submit' name='getResult' value='".$i['campId']."' class='btn btn-info float-right w-25'>Results</button>
                         </form>
                       </div>
                       <div class='card-footer'>Candidates: ". $i['candNum'] ."</div>
@@ -123,24 +124,26 @@
                   </div>"; 
               } 
                   $sql = "Select * from users where email = '" . $_COOKIE['email']."'";
-                 echo $sql;
+                 // echo $sql;
                  if($result = $conn->query($sql))
                  {
                  // if(!$result){die(('Query Failed') . $conn->error());}
                  // query_test($result);
-                 print_r($result);
+                 // print_r($result);
                  while($row = $result->fetch_assoc()){
                  $uwad = $row['uwaddress'];
-                 echo $uwad;
+                 // echo $uwad;
                    }
                  }
                  if(isset($_POST['getvCoin'])){
                   print_r($_COOKIE);
-                  echo $uwad;
+                  // echo $uwad;
                   echo " <script>window.location.assign('election.php?chain=".$_GET['chain']."&id=".       $_POST['getvCoin']."'); </script>"; 
                   sendvCoin('136QujpeDjvcqiNtMwrpKWHDaZ4QqmJEFcvu5S',$uwad,1);                 
                   }
-
+                  if(isset($_POST['getResult'])){
+                    echo " <script>window.location.assign('result.php?chain=".$_GET['chain']."&id=".       $_POST['getResult']."'); </script>"; 
+                  } 
                  
                }
   
@@ -150,7 +153,7 @@
 
       <?php
 
-      print_r($_POST);
+      // print_r($_POST);
         
       ?>
         

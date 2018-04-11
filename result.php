@@ -1,7 +1,7 @@
 <?php
 //namespace src\be\kunstmaan\multichain;
   session_start();
-  $_SESSION['crPage'] = 'election.php';
+  $_SESSION['crPage'] = 'result.php';
   include "backend/connection.php";
 ?>
 <?php 
@@ -35,7 +35,7 @@
 					<li class="nav-item">
 						<a href="index.php" class="nav-link">Home</a>
 					</li>
-					<!-- <li class="nav-item">
+<!-- 					<li class="nav-item">
 						<a href="#" class="nav-link">About us</a>
 					</li> -->
 					</ul>  
@@ -59,7 +59,7 @@
 				<table class="table table-hover table-bordered text-center">
 					<thead class="thead-dark">
 						<th>Candidate</th>
-						<th>Age</th>
+						<th>Votes</th>
 					</thead>
 					<tbody>
 					<?php
@@ -72,40 +72,17 @@
 						if($result){
 							foreach($result as $i)
 							{
+								$wadd=$i['cwAddress'];
 								echo "<tr>";
 								echo "<td>" . $i['candName'] . "</td>";
-								echo "<td>" . $i['candAge'] . "</td>";
+								echo "<td>" . getbal($wadd) . "</td>";
 								echo "</tr>";
 							}
 						}
 					?>
 					</tbody>
 				</table>
-			<div class="col-12 form-group row">
-			<select name="selectedCand" class="form-control col-8 offset-sm-2 col-sm-6 offset-md-3 col-md-4 mr-2" id="sel1">
-		<?php
-			$id = $_GET['id'];
-			$query = "select * from candidate where campId = $id";
-		$result = $conn->query($query);
-		query_test($result);
-		if($result)
-		{
-			foreach($result as $i)
-			{
-				echo "<option value=".$i['candName'] .">".$i['candName'] ."</option>";
-			}
-		}
-		?>
-				<!-- <option>Manik</option>
-				<option>Akshat</option>
-				<option>Ashwin</option>
-				<option>Chahat</option> -->
-			</select>
- 
-			<!-- <input type="text" id="candidate" class="col-8 offset-sm-2 col-sm-6 offset-md-3 col-md-4" /> -->
-			<button type="submit" name="voteFC" class="btn btn-warning col-3 col-sm-3 col-md-2">Vote</button>
-			</form>
-			</div>
+			
 			</div>
 
 		<?php
@@ -127,7 +104,7 @@
                  		}
                  }
                  echo $_POST['selectedCand'];
-                 // echo $uwad,$cwad;
+                 echo $uwad,$cwad;
                  sendvCoin($uwad,$cwad,1); 
 			}
 				

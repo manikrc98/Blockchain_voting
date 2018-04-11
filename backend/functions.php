@@ -37,6 +37,7 @@
                     // echo "Welcome " . $_SESSION['$userName'];
                     // sleep(1);
                     echo "<script>window.location.assign('loginSuccess.php'); </script>";
+                    // $_SESSION['crPage']="loginSuccess.php";
                }
                else
                {

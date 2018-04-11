@@ -115,9 +115,9 @@
           <li class="nav-item mr-2">
             <a href="index.php" class="nav-link">Home</a>
           </li>
-          <li class="nav-item mr-2">
+          <!-- <li class="nav-item mr-2">
             <a href="#" class="nav-link">About us</a>
-          </li>
+          </li> -->
           <li class="nav-item mr-2">
             <a href="login.php" class="nav-link d-lg-block" data-toggle="collapse" data-target="#demo">Login Now</a>
           </li>
@@ -157,22 +157,22 @@
          <a href="signup.php"><button type="button" class="btn btn-light ml-2">Signup</button></a>
          <!-- <input type="form-checkbox" name="rm">Remember me</input> -->
          <div class="form-check ml-2">
-          <label class="form-check-label text-white">
+         <!--  <label class="form-check-label text-white">
             <input type="checkbox" name="rm" class="form-check-input" value="">Remember Me
-          </label>
+          </label> -->
         </div>
          <!-- <?php //rememberme(); ?> -->
           </div>
       </form>
 
     </div>
-    <?php print_r($_COOKIE);print_r($_SESSION); ?>
+    <?php //print_r($_COOKIE);print_r($_SESSION); ?>
     <div class="container-fluid">
         <div class="display-1 fstyle text-center">
             <span class="display-1 head">Your vote counts,</span><br> <span class="gold">with blockchain</span>
         </div>
         <div class="row mt-5 col-12 mb-4"> 
-        <a href="create_camp.php" role="button" class="btn btn-primary offset-2 col-9 offset-sm-2 col-sm-4 offset-md-3 col-md-3 col-lg-3 offset-xl-4 col-xl-2">Start New Campaign</a>         
+        <a href="<?php echo"login.php";//if(isset($_COOKIE['name'])){echo"create_camp.php";} else {echo"#";} ?>" role="button" class="btn btn-primary offset-2 col-9 offset-sm-2 col-sm-4 offset-md-3 col-md-3 col-lg-3 offset-xl-4 col-xl-2">Start New Campaign</a>         
         <div class="col-12 col-sm-1 offset-sm-0 text-center mt-2 "><em><strong>or</strong></em></div>
         <a href="login.php" class="btn btn-dark offset-4 col-5 offset-sm-0 col-sm-3 col-md-3 col-lg-2 col-xl-1" role="button">Vote Now</a>
         </div>

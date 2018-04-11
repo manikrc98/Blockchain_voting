@@ -127,6 +127,21 @@
 				// $to=$_POST['to'];
 
 			}
+
+			function getbal($address)
+			{
+
+                $getinfo=multichain_getinfo();
+                if (no_displayed_error_result($allbalances, multichain('getaddressbalances', $address, 0, true))) {
+               		if($allbalances)
+               			return $allbalances[0]['qty'];
+               		else 
+               			return 0;
+
+                    }
+            }
+			
+
 			function sendvCoin($from,$to,$qty)
 			{
 				$success=no_displayed_error_result($sendtxid, multichain('sendassetfrom',
@@ -142,10 +157,10 @@
 ?>
 
 
-					<!-- <form class="form-horizontal" method="post" action="<?php echo chain_page_url_html($_SESSION['crPage'],$chain)?>"> -->
+					<!-- <form class="form-horizontal" method="post" action="<?php //echo chain_page_url_html($_SESSION['crPage'],$chain)?>"> -->
 						<!-- <div class="form-group"> -->
 							<!-- <div class="col-xs-12"> -->
-								<input class="btn btn-default" name="getnewaddress" type="submit" value="Get new address">
+								<!-- <input class="btn btn-default" name="getnewaddress" type="submit" value="Get new address"> -->
 							<!-- </div> -->
 						<!-- </div> -->
 						<!-- <div class="form-group"> -->

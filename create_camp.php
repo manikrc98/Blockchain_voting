@@ -8,9 +8,8 @@ session_start();
     include "backend/functions.php";
     if(isset($_POST['logout']))
       logout();
-      print_r($_POST);
-      echo "<br>";
-      print_r($_SESSION);
+      // print_r($_POST);
+      // print_r($_SESSION);
 ?>
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
@@ -59,9 +58,9 @@ session_start();
           <li class="nav-item">
             <a href="index.php" class="nav-link">Home</a>
           </li>
-          <li class="nav-item">
+         <!--  <li class="nav-item">
             <a href="#" class="nav-link">About us</a>
-          </li>
+          </li> -->
           </ul>
         </div>
 
@@ -74,7 +73,7 @@ session_start();
          <div class="dropdown">
         <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><?php echo $_COOKIE['name']; ?></button>
         <div class="dropdown-menu dropdown-menu-right">
-            <button class="dropdown-item" type="button" name="edit">Edit Profile</button>
+<!--             <button class="dropdown-item" type="button" name="edit">Edit Profile</button> -->
             <button class="dropdown-item" type="button" name="create_camp" onclick="window.location.href='create_camp.php'">Create Campaign</button>
             <button class="dropdown-item" type="submit" name="logout">Logout</button>
         </div>
@@ -135,7 +134,7 @@ session_start();
      			<th>Candidate Number</th>
      			<th>Candidate Name </th>
      			<th>Candidate Age </th>
-     			<th>Candidate Photo </th>
+     			<!-- <th>Candidate Photo </th> -->
      		</thead>
      	
                   <!-- PHP FOR NEXT1 -->
@@ -149,7 +148,7 @@ session_start();
             <td>" .$i. "</td>
             <td><input type='text' pattern='[A-Za-z]{1,30}' title='Name is a text only field' name='cN" .$i."' required></input></td>
             <td><input type='Number' name='cAg" .$i."' min='18' required></input></td>
-            <td><input type='file' name='cImg".$i."'></input></td>
+            <!-- <td><input type='file' name='cImg".$i."'></input></td> -->
             </tr>";
             $i++;
           }
